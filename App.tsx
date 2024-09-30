@@ -17,10 +17,9 @@ function App(): React.JSX.Element {
       <Stack.Navigator
         initialRouteName="NavigatinBar"
         screenOptions={{
-          headerShown: false, // Üst çubuğu kaldırmak için
+          headerShown: false,
         }}>
         <Stack.Screen name="NavigatinBar" component={NavigatinBar} />
-        {/* Diğer ekranları buraya ekleyebilirsiniz */}
       </Stack.Navigator>
     </NavigationContainer>
   );

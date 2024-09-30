@@ -208,9 +208,6 @@ function Discover({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.top}>
-        <View style={styles.tabContainer}>
-          <Text style={styles.tabTitle}>Musa</Text>
-        </View>
         <TouchableOpacity style={styles.button}>
           <Image
             source={require('../images/plus.png')}
@@ -310,23 +307,23 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   boxContainer: {
-    flexDirection: 'row', // Yatayda kutuları düzenle
+    flexDirection: 'row',
     padding: 10,
   },
   timeContainer: {
-    position: 'absolute', // Pozisyonu mutlak yap
-    bottom: 0, // Alt kısımdan 10 birim yukarıda
-    left: 0, // Sol taraftan 0 birim
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
     right: 0,
-    alignItems: 'center', // Ortala
-    color: '#0022e0', // Yazı rengi
-    backgroundColor: 'rgba(46, 71, 59, 0.5)', // Arka plan rengi (şeffaf)
+    alignItems: 'center',
+    color: '#0022e0',
+    backgroundColor: 'rgba(46, 71, 59, 0.5)',
   },
   time: {
     color: '#FFF',
   },
   box: {
-    marginRight: 10, // Kutular arasında boşluk
+    marginRight: 10,
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
