@@ -1,5 +1,5 @@
-import React from 'react';
-import {StyleSheet, View, TouchableOpacity, Text} from 'react-native';
+import React from "react";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 
 type ButtonGroupProps = {
   buttonTextLeft: string;
@@ -25,25 +25,28 @@ const ButtonGroup = ({
       <TouchableOpacity
         style={[
           styles.navButtonNow,
-          selectedTab === 'now' && styles.navButtonSelected,
+          selectedTab === "now" && styles.navButtonSelected,
         ]}
-        onPress={onPressLeft}>
+        onPress={onPressLeft}
+      >
         <Text style={styles.navButtonText}>{buttonTextLeft}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={[
           styles.navButtonWeakly,
-          selectedTab === 'weakly' && styles.navButtonSelected,
+          selectedTab === "weakly" && styles.navButtonSelected,
         ]}
-        onPress={onPressMid}>
+        onPress={onPressMid}
+      >
         <Text style={styles.navButtonText}>{buttonTextMid}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={[
           styles.navButtonMonthly,
-          selectedTab === 'monthly' && styles.navButtonSelected,
+          selectedTab === "monthly" && styles.navButtonSelected,
         ]}
-        onPress={onPressRight}>
+        onPress={onPressRight}
+      >
         <Text style={styles.navButtonText}>{buttonTextRight}</Text>
       </TouchableOpacity>
     </View>
@@ -52,37 +55,37 @@ const ButtonGroup = ({
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   navButtonNow: {
     paddingVertical: 7,
     paddingHorizontal: 10,
-    backgroundColor: '#3b3b3b',
+    backgroundColor: "#3b3b3b",
     borderRadius: 20,
     marginRight: 15,
   },
   navButtonWeakly: {
     paddingVertical: 5,
     paddingHorizontal: 10,
-    backgroundColor: '#3b3b3b',
+    backgroundColor: "#3b3b3b",
     borderRadius: 20,
     marginRight: 10,
   },
   navButtonMonthly: {
     paddingVertical: 5,
     paddingHorizontal: 10,
-    backgroundColor: '#3b3b3b',
+    backgroundColor: "#3b3b3b",
     borderRadius: 20,
     marginRight: 10,
   },
   navButtonSelected: {
-    backgroundColor: '#ffffffed',
+    backgroundColor: "#ffffff",
   },
   navButtonText: {
-    color: '#180606',
+    color: "#180606",
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
 

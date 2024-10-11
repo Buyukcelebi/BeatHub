@@ -1,5 +1,5 @@
-import React from 'react';
-import {StyleSheet, TouchableOpacity, Text, View, Image} from 'react-native';
+import React from "react";
+import { StyleSheet, TouchableOpacity, View, Image } from "react-native";
 
 type SongButtonProps = {
   onPressPause: () => void;
@@ -15,16 +15,22 @@ const SongButton = ({
   return (
     <View style={styles.buttonContainer}>
       <TouchableOpacity style={styles.buttonBack} onPress={onPressBack}>
-        <Image source={require('../../images/back.png')} style={styles.image} />
+        <Image
+          source={require("../../assets/images/back.png")}
+          style={[styles.image, { tintColor: "white" }]}
+        />
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonPause} onPress={onPressPause}>
         <Image
-          source={require('../../images/pause.png')}
-          style={styles.image}
+          source={require("../../assets/images/pause.png")}
+          style={[styles.image, { tintColor: "#071e4a" }]}
         />
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonNext} onPress={onPressNext}>
-        <Image source={require('../../images/next.png')} style={styles.image} />
+        <Image
+          source={require("../../assets/images/next.png")}
+          style={[styles.image, { tintColor: "white" }]}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -32,48 +38,42 @@ const SongButton = ({
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    flexDirection: 'row', // Butonları yan yana diz
-    justifyContent: 'center', // Butonları ortala
-    alignItems: 'center',
-    marginBottom: 10,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   buttonPause: {
-    paddingVertical: '6.5%',
-    borderWidth: 1,
-    borderRadius: 70,
-    borderColor: '#000000',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    width: '20%',
-    marginHorizontal: 7, // Butonlar arasındaki boşluk
+    paddingVertical: "6.5%",
+    borderRadius: 90,
+    borderColor: "#000000",
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    width: "23%",
+    marginHorizontal: 7,
   },
   buttonBack: {
-    paddingVertical: '4%',
-    borderWidth: 1,
-    borderRadius: 70,
-    borderColor: '#000000',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    width: '15%',
-    marginHorizontal: 7, // Butonlar arasındaki boşluk
+    paddingVertical: "10%",
+    borderRadius: 80,
+    alignItems: "center",
+    backgroundColor: "#071e4a",
+    width: "20%",
+    marginHorizontal: 7,
   },
   buttonNext: {
-    paddingVertical: '4%',
-    borderWidth: 1,
+    paddingVertical: "10%",
     borderRadius: 60,
-    borderColor: '#000000',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    width: '15%',
-    marginHorizontal: 7, // Butonlar arasındaki boşluk
+    alignItems: "center",
+    backgroundColor: "#071e4a",
+    width: "20%",
+    marginHorizontal: 7,
   },
   buttonText: {
-    color: 'black', // Buton metninin rengi
+    color: "black",
     fontSize: 19,
   },
   image: {
-    width: 20, // Resmin genişliği
-    height: 20, // Resmin yüksekliği
+    width: 25,
+    height: 25,
   },
 });
 

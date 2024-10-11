@@ -182,7 +182,7 @@ function Onboarding1() {
     if (index === 0) {
       setSelectedTitle(title);
     } else if (index === 1) {
-      setSelectedTitleStep2(title);
+      setSelectedTitleStep2(title); // İkinci adımda seçimi burada güncelliyoruz
     }
   };
 
@@ -219,6 +219,7 @@ function Onboarding1() {
 
                 if (index + 1 === 1) {
                   setSelectedId(DATA2[0].id);
+                  setSelectedTitleStep2(DATA2[0].title);
                 } else if (index + 1 === 2) {
                   setSelectedId(DATA3[0].id);
                 }
@@ -228,9 +229,6 @@ function Onboarding1() {
                   JSON.stringify(true)
                 );
                 router.replace("/(tabs)/Discover");
-              }
-              if (DATA_LIST[0]) {
-                setSelectedTitleStep2(DATA2[0].title);
               }
             }}
           />

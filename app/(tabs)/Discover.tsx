@@ -12,6 +12,7 @@ import {
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import ButtonGroup from "@/components/buttons/ButtonGrups";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import { router } from "expo-router";
 
 const nowData = [
   {
@@ -147,27 +148,6 @@ const monthlyData = [
 
 function Discover() {
   const [selectedTab, setSelectedTab] = useState("now");
-  const [expandAnim] = useState(new Animated.Value(0));
-
-  const handleScroll = (event) => {
-    const offsetY = event.nativeEvent.contentOffset.y;
-    const contentHeight = event.nativeEvent.contentSize.height;
-    const layoutHeight = event.nativeEvent.layoutMeasurement.height;
-
-    if (offsetY > contentHeight - layoutHeight - 10) {
-      Animated.timing(expandAnim, {
-        toValue: 1,
-        duration: 200,
-        useNativeDriver: false,
-      }).start();
-    } else if (offsetY < 100) {
-      Animated.timing(expandAnim, {
-        toValue: 0,
-        duration: 200,
-        useNativeDriver: false,
-      }).start();
-    }
-  };
 
   const renderItem = (item) => (
     <TouchableOpacity key={item.id}>
@@ -245,7 +225,12 @@ function Discover() {
 
         {selectedTab === "now" && (
           <>
-            <PrimaryButton buttonText="View Full Craft" onPress={() => {}} />
+            <PrimaryButton
+              buttonText="View Full Craft"
+              onPress={() => {
+                router.replace("/pages/TopCraft");
+              }}
+            />
             <View style={styles.flatListTitle}>
               <Text style={styles.title}>Top Catagories</Text>
             </View>
