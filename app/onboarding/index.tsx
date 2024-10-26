@@ -182,7 +182,7 @@ function Onboarding1() {
     if (index === 0) {
       setSelectedTitle(title);
     } else if (index === 1) {
-      setSelectedTitleStep2(title); // İkinci adımda seçimi burada güncelliyoruz
+      setSelectedTitleStep2(title);
     }
   };
 

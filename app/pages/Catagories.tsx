@@ -1,6 +1,8 @@
+import { useLocalSearchParams } from "expo-router";
 import ButtonGroup from "@/components/buttons/ButtonGrups";
 import { router } from "expo-router";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -12,7 +14,7 @@ import {
   ScrollView,
 } from "react-native";
 
-const nowData = [
+const jazzData = [
   {
     id: "1",
     title: "Song 1",
@@ -55,7 +57,7 @@ const nowData = [
   },
 ];
 
-const weaklyData = [
+const popData = [
   {
     id: "1",
     title: "Latest Song 1",
@@ -68,7 +70,7 @@ const weaklyData = [
     title: "Latest Song 2",
     description: "Rock 2",
     count: "2803099",
-    imageUrl: require("@/assets/images/album.png"),
+    imageUrl: require("@/assets/images/Jazz.png"),
   },
   {
     id: "3",
@@ -100,7 +102,51 @@ const weaklyData = [
   },
 ];
 
-const monthlyData = [
+const rockData = [
+  {
+    id: "1",
+    title: "Latest Song 3",
+    description: "Rock 1",
+    count: "2803099",
+    imageUrl: require("@/assets/images/album.png"),
+  },
+  {
+    id: "2",
+    title: "Latest Song 2",
+    description: "Rock 2",
+    count: "2803099",
+    imageUrl: require("@/assets/images/album.png"),
+  },
+  {
+    id: "3",
+    title: "Latest Song 3",
+    description: "Rock 3",
+    count: "2803099",
+    imageUrl: require("@/assets/images/Jazz.png"),
+  },
+  {
+    id: "4",
+    title: "Latest Song 4",
+    description: "Rock 4",
+    count: "2803099",
+    imageUrl: require("@/assets/images/album.png"),
+  },
+  {
+    id: "5",
+    title: "Latest Song 5",
+    description: "Rock 5",
+    count: "2803099",
+    imageUrl: require("@/assets/images/album.png"),
+  },
+  {
+    id: "6",
+    title: "Latest Song 6",
+    description: "Rock 6",
+    count: "2803099",
+    imageUrl: require("@/assets/images/album.png"),
+  },
+];
+const rapData = [
   {
     id: "1",
     title: "Latest Song 3",
@@ -134,7 +180,7 @@ const monthlyData = [
     title: "Latest Song 5",
     description: "Rock 5",
     count: "2803099",
-    imageUrl: require("@/assets/images/album.png"),
+    imageUrl: require("@/assets/images/Jazz.png"),
   },
   {
     id: "6",
@@ -145,8 +191,13 @@ const monthlyData = [
   },
 ];
 
-function TopCraft() {
-  const [selectedTab, setSelectedTab] = useState("now");
+function Catagories() {
+  const [selectedTab, setSelectedTab] = useState();
+  const { category } = useLocalSearchParams();
+
+  useEffect(() => {
+    console.log("Selected Category:", category);
+  }, [category]);
 
   const renderItem = ({ item }) => (
     <TouchableOpacity key={item.id}>
@@ -180,12 +231,17 @@ function TopCraft() {
     </TouchableOpacity>
   );
 
-  const dataToRender =
-    selectedTab === "now"
-      ? nowData
-      : selectedTab === "weakly"
-      ? weaklyData
-      : monthlyData;
+  let dataToRender = [];
+
+  if (category === "Jazz") {
+    dataToRender = jazzData;
+  } else if (category === "Pop") {
+    dataToRender = popData;
+  } else if (category === "Rock") {
+    dataToRender = rockData;
+  } else {
+    dataToRender = rapData;
+  }
 
   return (
     <View style={styles.container}>
@@ -202,25 +258,7 @@ function TopCraft() {
               style={styles.arrowIcon}
             ></Image>
           </TouchableOpacity>
-          <Text style={styles.title}>Top Craft</Text>
-
-          <View style={styles.buttonContainer}>
-            <ScrollView
-              style={styles.scroll}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-            >
-              <ButtonGroup
-                selectedTab={selectedTab}
-                buttonTextLeft={"Now"}
-                buttonTextMid={"Weakly"}
-                buttonTextRight={"Monthly"}
-                onPressLeft={() => setSelectedTab("now")}
-                onPressMid={() => setSelectedTab("weakly")}
-                onPressRight={() => setSelectedTab("monthly")}
-              ></ButtonGroup>
-            </ScrollView>
-          </View>
+          <Text style={styles.title}> {category}</Text>
         </View>
       </View>
       <View style={styles.bottom}>
@@ -344,4 +382,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TopCraft;
+export default Catagories;

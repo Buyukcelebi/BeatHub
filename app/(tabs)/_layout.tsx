@@ -12,13 +12,21 @@ export default function TabLayout() {
     <Tabs
       initialRouteName="Discover"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        headerShown: false,
+        tabBarActiveTintColor: "#2cbece",
+        headerShown: true,
         tabBarStyle: {
           backgroundColor: "rgba(31, 40, 125, 0.8)",
           borderTopWidth: 0,
           position: "absolute",
           borderRadius: 10,
+        },
+        headerStyle: {
+          backgroundColor: "#071e4a",
+        },
+        headerTitleStyle: {
+          color: Colors[colorScheme ?? "light"].text,
+          fontSize: 18,
+          fontWeight: "bold",
         },
       }}
     >

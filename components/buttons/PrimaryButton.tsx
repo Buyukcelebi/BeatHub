@@ -1,5 +1,5 @@
-import React from 'react';
-import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
+import React from "react";
+import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
 type PrimaryButtonProps = {
   buttonText: string;
@@ -21,22 +21,21 @@ const PrimaryButton = ({
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   button: {
     paddingVertical: 13,
     borderWidth: 1,
     borderRadius: 20,
-    borderColor: '#153b7d',
-    alignItems: 'center',
-    backgroundColor: '#06013c',
+    borderColor: "#153b7d",
+    alignItems: "center",
+    backgroundColor: "#06013c",
 
-    width: '95%',
-    marginLeft: 15,
+    width: "100%",
     marginBottom: 20,
   },
   buttonText: {
-    color: 'white',
+    color: "white",
     fontSize: 19,
   },
 });

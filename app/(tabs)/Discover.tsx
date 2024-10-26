@@ -12,7 +12,7 @@ import {
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import ButtonGroup from "@/components/buttons/ButtonGrups";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import { router } from "expo-router";
+import { useRouter } from "expo-router";
 
 const nowData = [
   {
@@ -101,6 +101,7 @@ const weaklyData = [
     imageUrl: require("@/assets/images/album.png"),
   },
 ];
+
 const monthlyData = [
   {
     id: "1",
@@ -149,6 +150,14 @@ const monthlyData = [
 function Discover() {
   const [selectedTab, setSelectedTab] = useState("now");
 
+  const router = useRouter();
+
+  const handlePress = (category) => {
+    router.replace(
+      `/pages/Catagories?category=${encodeURIComponent(category)}`
+    );
+  };
+
   const renderItem = (item) => (
     <TouchableOpacity key={item.id}>
       <View style={styles.listItem}>
@@ -186,9 +195,6 @@ function Discover() {
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
       headerImage={
         <View style={styles.top}>
-          <View style={styles.tabContainer}>
-            <Text style={styles.tabTitle}>Musa</Text>
-          </View>
           <TouchableOpacity style={styles.button}>
             <Image
               source={require("@/assets/images/plus.png")}
@@ -231,7 +237,7 @@ function Discover() {
                 router.replace("/pages/TopCraft");
               }}
             />
-            <View style={styles.flatListTitle}>
+            <View style={styles.catagoriesBox}>
               <Text style={styles.title}>Top Catagories</Text>
             </View>
             <ScrollView
@@ -239,7 +245,10 @@ function Discover() {
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             >
-              <TouchableOpacity style={styles.box}>
+              <TouchableOpacity
+                style={styles.box}
+                onPress={() => handlePress("Jazz")}
+              >
                 <ImageBackground
                   source={require("@/assets/images/Jazz.png")}
                   style={styles.categoriesImage}
@@ -247,28 +256,37 @@ function Discover() {
                   <Text style={styles.boxText}>Jazz</Text>
                 </ImageBackground>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.box}>
+              <TouchableOpacity
+                style={styles.box}
+                onPress={() => handlePress("Pop")}
+              >
                 <ImageBackground
                   source={require("@/assets/images/Jazz.png")}
                   style={styles.categoriesImage}
                 >
-                  <Text style={styles.boxText}>Jazz</Text>
+                  <Text style={styles.boxText}>Pop</Text>
                 </ImageBackground>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.box}>
+              <TouchableOpacity
+                style={styles.box}
+                onPress={() => handlePress("Rock")}
+              >
                 <ImageBackground
                   source={require("@/assets/images/Jazz.png")}
                   style={styles.categoriesImage}
                 >
-                  <Text style={styles.boxText}>Jazz</Text>
+                  <Text style={styles.boxText}>Rock</Text>
                 </ImageBackground>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.box}>
+              <TouchableOpacity
+                style={styles.box}
+                onPress={() => handlePress("Rap")}
+              >
                 <ImageBackground
                   source={require("@/assets/images/Jazz.png")}
                   style={styles.categoriesImage}
                 >
-                  <Text style={styles.boxText}>Jazz</Text>
+                  <Text style={styles.boxText}>Rap</Text>
                 </ImageBackground>
               </TouchableOpacity>
             </ScrollView>
@@ -303,24 +321,22 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   boxContainer: {
-    flexDirection: "row", // Yatayda kutuları düzenle
-    padding: 10,
+    flexDirection: "row",
   },
   timeContainer: {
-    position: "absolute", // Pozisyonu mutlak yap
-    bottom: 0, // Alt kısımdan 10 birim yukarıda
-    left: 0, // Sol taraftan 0 birim
+    position: "absolute",
+    bottom: 0,
+    left: 0,
     right: 0,
-    alignItems: "center", // Ortala
-    color: "#0022e0", // Yazı rengi
-    backgroundColor: "rgba(46, 71, 59, 0.5)", // Arka plan rengi (şeffaf)
+    alignItems: "center",
+    color: "#0022e0",
+    backgroundColor: "rgba(46, 71, 59, 0.5)",
   },
   time: {
     color: "#FFF",
   },
   box: {
-    marginRight: 10, // Kutular arasında boşluk
-    padding: 10,
+    marginRight: 20,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -332,13 +348,18 @@ const styles = StyleSheet.create({
 
   scroll: {
     paddingBottom: 80,
+    marginRight: 20,
+    marginLeft: 20,
   },
   flatListTitle: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingLeft: 20,
     paddingBottom: 15,
+    paddingTop: 8,
     alignItems: "center",
+  },
+  catagoriesBox: {
+    paddingBottom: 20,
   },
   button: {
     flex: 1,
@@ -346,7 +367,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#5e2e9c5f",
     borderRadius: 20,
-    margin: 20,
+    marginHorizontal: 20,
+    marginBottom: 20,
+    marginTop: 10,
     overflow: "hidden",
   },
   buttonImage: {
@@ -359,20 +382,19 @@ const styles = StyleSheet.create({
   listItem: {
     flexDirection: "row",
     alignItems: "center",
-    paddingLeft: 20,
     paddingBottom: 15,
   },
   categoriesImage: {
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
   },
   listItemImage: {
-    width: 100,
-    height: 100,
+    width: 90,
+    height: 90,
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -405,10 +427,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     alignItems: "center",
   },
-  tabContainer: {
-    marginTop: 20,
-    marginLeft: 15,
-  },
+
   tabTitle: {
     color: "white",
     fontSize: 30,
