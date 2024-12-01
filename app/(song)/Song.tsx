@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import Slider from "@react-native-community/slider";
 import SongButton from "@/components/buttons/SongButton";
+import BackButton from "@/components/buttons/BackButton";
+import { router, useLocalSearchParams, useRouter } from "expo-router";
 
 const { height, width } = Dimensions.get("window");
 
@@ -29,13 +31,28 @@ function Song() {
   const [shufflePressed, setShufflePressed] = useState(true);
   const [currentTime, setCurrentTime] = useState(90);
 
+  const router = useRouter();
+  const { title, description, imageUrl, time } = useLocalSearchParams();
   const handleShufflePress = () => {
     setShufflePressed(!shufflePressed);
   };
 
+  useEffect(() => {
+    console.log("Selected title:", title, description, time, imageUrl);
+  }, [title, description, time, imageUrl]);
+
+  const parsedTime = Number(time);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.top}>
+        <View style={styles.backButton}>
+          <BackButton
+            onPress={() => {
+              router.push("/(tabs)/Discover");
+            }}
+          ></BackButton>
+        </View>
         <View style={styles.albumContainer}>
           <View style={styles.songBox}>
             <Image source={songs[0].imageUrl} style={styles.imageSong} />
@@ -45,8 +62,8 @@ function Song() {
           <View style={styles.buttonContainer}>
             <View style={styles.songTitle}>
               <View style={styles.textContainer}>
-                <Text style={styles.title}>{songs[0].title}</Text>
-                <Text style={styles.description}>{songs[0].description}</Text>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.description}>{description}</Text>
               </View>
               <TouchableOpacity style={styles.button}>
                 <Image
@@ -59,7 +76,7 @@ function Song() {
             <View style={styles.sliderContainer}>
               <Slider
                 minimumValue={0}
-                maximumValue={songs[0].time}
+                maximumValue={parsedTime}
                 value={currentTime}
                 onValueChange={(value) => setCurrentTime(value)}
                 minimumTrackTintColor="#FFF"
@@ -69,11 +86,11 @@ function Song() {
               <View style={styles.timeContainer}>
                 <Text style={styles.timeText}>
                   {Math.floor(currentTime / 60)}:
-                  {("0" + Math.floor(currentTime % 60)).slice(-2)}{" "}
+                  {("0" + Math.floor(currentTime % 60)).slice(-2)}
                 </Text>
                 <Text style={styles.timeText}>
-                  {Math.floor(songs[0].time / 60)}:
-                  {("0" + Math.floor(songs[0].time % 60)).slice(-2)}{" "}
+                  {Math.floor(parsedTime / 60)}:
+                  {("0" + Math.floor(parsedTime % 60)).slice(-2)}
                 </Text>
               </View>
             </View>
@@ -132,6 +149,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginHorizontal: 20,
     height: height * 0.9,
+  },
+  backButton: {
+    marginBottom: 10,
   },
   bottom: {
     backgroundColor: "#071e4a",

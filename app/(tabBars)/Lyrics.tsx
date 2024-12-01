@@ -71,14 +71,18 @@ function Lyrics() {
     <ScrollView style={styles.container} showsHorizontalScrollIndicator={false}>
       <View style={styles.top}>
         <View style={styles.inputContainer}>
-          <Text style={styles.inputTitle}>Enter Lyrics</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={(value) => setText(value)}
-            value={text}
-            multiline={true}
-            textAlignVertical="top"
-          />
+          <View style={styles.inputWrapper}>
+            {text === "" && (
+              <Text style={styles.customPlaceholder}>Enter Lyrics</Text>
+            )}
+            <TextInput
+              style={styles.inputLyric}
+              onChangeText={(value) => setText(value)}
+              value={text}
+              multiline={true}
+              textAlignVertical="top"
+            />
+          </View>
         </View>
       </View>
 
@@ -203,7 +207,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   inputContainer: {
-    marginTop: 10,
+    marginTop: 15,
     marginHorizontal: 20,
     backgroundColor: "#1f287d",
     borderColor: "#2cbece",
@@ -233,7 +237,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     paddingTop: 20,
-    height: 200,
+    height: 170,
   },
   title: {
     color: "#FFF",
@@ -253,6 +257,27 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     color: "#FFF",
     fontSize: 17,
+  },
+  inputWrapper: {
+    position: "relative",
+    backgroundColor: "#1f287d",
+    borderRadius: 20,
+  },
+  customPlaceholder: {
+    position: "absolute",
+    top: 20,
+    left: 20,
+    color: "#FFF",
+    fontSize: 17,
+    fontWeight: "bold",
+  },
+  inputLyric: {
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    color: "white",
+    fontSize: 16,
+    height: 200,
   },
 });
 

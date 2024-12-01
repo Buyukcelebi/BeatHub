@@ -1,3 +1,4 @@
+import BackButton from "@/components/buttons/BackButton";
 import ButtonGroup from "@/components/buttons/ButtonGrups";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -191,17 +192,11 @@ function TopCraft() {
     <View style={styles.container}>
       <View style={styles.top}>
         <View style={styles.topBox}>
-          <TouchableOpacity
-            style={styles.backButton}
+          <BackButton
             onPress={() => {
               router.replace("/(tabs)/Discover");
             }}
-          >
-            <Image
-              source={require("@/assets/images/arrow.png")}
-              style={styles.arrowIcon}
-            ></Image>
-          </TouchableOpacity>
+          ></BackButton>
           <Text style={styles.title}>Top Craft</Text>
 
           <View style={styles.buttonContainer}>

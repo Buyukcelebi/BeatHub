@@ -18,17 +18,17 @@ const nowData = [
   {
     id: "1",
     title: "Song 1",
-    description: "Jazz 1",
+    description: "Jazzz 1",
     count: "2803099",
-    time: "30",
-    imageUrl: require("@/assets/images/Jazz.png"),
+    time: 300,
+    imageUrl: "@/assets/images/Jazz.png",
   },
   {
     id: "2",
     title: "Song 2",
     description: "Jazz 2",
     count: "2803099",
-    time: "30",
+    time: 200,
     imageUrl: require("@/assets/images/album.png"),
   },
   {
@@ -36,7 +36,7 @@ const nowData = [
     title: "Song 3",
     description: "Jazz 3",
     count: "2803099",
-    time: "30",
+    time: "400",
     imageUrl: require("@/assets/images/album.png"),
   },
   {
@@ -158,8 +158,34 @@ function Discover() {
     );
   };
 
+  const handlePress1 = (song) => {
+    console.log(
+      "Navigating with parameters:",
+      song.title,
+      song.description,
+      song.imageUrl,
+      song.time
+    );
+    router.replace(
+      `/(song)/Song?title=${encodeURIComponent(
+        song.title
+      )}&description=${encodeURIComponent(
+        song.description
+      )}&time=${encodeURIComponent(song.time)}&imageUrl=${encodeURIComponent(
+        song.time
+      )}&count=${encodeURIComponent(song.count)}&imageUrl=${encodeURIComponent(
+        song.imageUrl
+      )}`
+    );
+  };
+
   const renderItem = (item) => (
-    <TouchableOpacity key={item.id}>
+    <TouchableOpacity
+      key={item.id}
+      onPress={() => {
+        handlePress1(item);
+      }}
+    >
       <View style={styles.listItem}>
         <ImageBackground source={item.imageUrl} style={styles.listItemImage}>
           <Image
