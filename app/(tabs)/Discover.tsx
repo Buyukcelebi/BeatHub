@@ -160,7 +160,7 @@ function Discover() {
 
   const handlePress1 = (song) => {
     console.log(
-      "Navigating with parameters:",
+      "gidenler:",
       song.title,
       song.description,
       song.imageUrl,

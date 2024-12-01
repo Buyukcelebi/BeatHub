@@ -18,9 +18,6 @@ const { height, width } = Dimensions.get("window");
 const songs = [
   {
     id: "1",
-    title: "title",
-    description: "Jazz 1",
-    time: 320,
     imageUrl: require("@/assets/images/Jazz.png"),
     lyrics:
       "I heard that you're settled down\nThat you found a girl and you're married now\nI heard that your dreams came true\nGuess she gave you things, I didn't give to you\nOld friend, why are you so shy?\nAin't like you to hold back or hide from the light\nI hate to turn up out of the blue, uninvited\nBut I couldn't stay away, I couldn't fight it\nI had hoped you'd see my face\nAnd that you'd be reminded that for me, it isn't over\nNever mind, I'll find someone like you\nI wish nothing but the best for you, too\nDon't forget me, I beg\nI remember you said\nSometimes it lasts in love, but sometimes it hurts instead\nSometimes it lasts in love, but sometimes it hurts instead",
@@ -38,7 +35,7 @@ function Song() {
   };
 
   useEffect(() => {
-    console.log("Selected title:", title, description, time, imageUrl);
+    console.log("gelenler:", title, description, time, imageUrl);
   }, [title, description, time, imageUrl]);
 
   const parsedTime = Number(time);
