@@ -10,8 +10,8 @@ import {
   Animated,
 } from "react-native";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import ButtonGroup from "@/components/buttons/ButtonGrups";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
+import ButtonGroup from "@/components/Buttons/ButtonGrups";
+import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import { useRouter } from "expo-router";
 
 const nowData = [

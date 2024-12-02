@@ -10,7 +10,7 @@ import {
   FlatList,
   ScrollView,
 } from "react-native";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
+import PrimaryButton from "@/components/Buttons/PrimaryButton";
 
 function Lyrics() {
   const [text, setText] = useState("");

@@ -10,7 +10,7 @@ import {
   FlatList,
   ScrollView,
 } from "react-native";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
+import PrimaryButton from "@/components/Buttons/PrimaryButton";
 
 function Prompt() {
   const [text, setText] = useState("");

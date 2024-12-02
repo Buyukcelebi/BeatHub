@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
+import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import { router } from "expo-router";
 import React from "react";
 

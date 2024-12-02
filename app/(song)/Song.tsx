@@ -9,8 +9,8 @@ import {
   Dimensions,
 } from "react-native";
 import Slider from "@react-native-community/slider";
-import SongButton from "@/components/buttons/SongButton";
-import BackButton from "@/components/buttons/BackButton";
+import SongButton from "@/components/Buttons/SongButton";
+import BackButton from "@/components/Buttons/BackButton";
 import { router, useLocalSearchParams, useRouter } from "expo-router";
 
 const { height, width } = Dimensions.get("window");

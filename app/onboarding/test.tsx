@@ -12,7 +12,7 @@ import { router } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import STORAGE_KEYS from "@/constants/StorageKeys";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
+import PrimaryButton from "@/components/Buttons/PrimaryButton";
 
 const DATA = [
   {

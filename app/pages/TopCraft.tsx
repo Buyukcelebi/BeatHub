@@ -1,5 +1,5 @@
-import BackButton from "@/components/buttons/BackButton";
-import ButtonGroup from "@/components/buttons/ButtonGrups";
+import BackButton from "@/components/Buttons/BackButton";
+import ButtonGroup from "@/components/Buttons/ButtonGrups";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import {

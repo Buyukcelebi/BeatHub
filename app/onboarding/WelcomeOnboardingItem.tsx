@@ -2,7 +2,7 @@ import * as Animatable from "react-native-animatable";
 import { View, Text, StatusBar } from "react-native";
 
 import SongCarousel from "@/components/SongCarousel";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
+import PrimaryButton from "@/components/Buttons/PrimaryButton";
 
 interface OnboardingViewProps {
   routeTo?: string;

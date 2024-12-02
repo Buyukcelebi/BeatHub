@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import ButtonGroup from "@/components/buttons/ButtonGrups";
+import ButtonGroup from "@/components/Buttons/ButtonGrups";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -13,7 +13,7 @@ import {
   FlatList,
   ScrollView,
 } from "react-native";
-import BackButton from "@/components/buttons/BackButton";
+import BackButton from "@/components/Buttons/BackButton";
 
 const jazzData = [
   {
