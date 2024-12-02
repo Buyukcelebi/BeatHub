@@ -13,12 +13,13 @@ import {
   FlatList,
   ScrollView,
 } from "react-native";
+import BackButton from "@/components/buttons/BackButton";
 
 const jazzData = [
   {
     id: "1",
     title: "Song 1",
-    description: "Jazz 1",
+    description: "Jazz 5",
     count: "2803099",
     time: "30",
     imageUrl: require("@/assets/images/Jazz.png"),
@@ -247,17 +248,11 @@ function Catagories() {
     <View style={styles.container}>
       <View style={styles.top}>
         <View style={styles.topBox}>
-          <TouchableOpacity
-            style={styles.backButton}
+          <BackButton
             onPress={() => {
               router.replace("/(tabs)/Discover");
             }}
-          >
-            <Image
-              source={require("@/assets/images/arrow.png")}
-              style={styles.arrowIcon}
-            ></Image>
-          </TouchableOpacity>
+          ></BackButton>
           <Text style={styles.title}> {category}</Text>
         </View>
       </View>

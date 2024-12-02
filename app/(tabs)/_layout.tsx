@@ -17,6 +17,8 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: "rgba(31, 40, 125, 0.8)",
           borderTopWidth: 0,
+          elevation: 0,
+          shadowOpacity: 0,
           position: "absolute",
           borderRadius: 10,
         },
@@ -24,9 +26,13 @@ export default function TabLayout() {
           backgroundColor: "#071e4a",
         },
         headerTitleStyle: {
-          color: Colors[colorScheme ?? "light"].text,
-          fontSize: 18,
+          color: "white",
+          fontSize: 30,
           fontWeight: "bold",
+        },
+        headerTitleAlign: "left",
+        headerLeftContainerStyle: {
+          paddingLeft: 10,
         },
       }}
     >

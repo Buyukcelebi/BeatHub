@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { router } from "expo-router";
+import React from "react";
 
 function Library() {
   return (
@@ -27,7 +28,7 @@ function Library() {
           <PrimaryButton
             buttonText="Create New Song"
             onPress={() => {
-              router.replace("/(song)/Song");
+              router.replace("/(tabs)/Create");
             }}
           ></PrimaryButton>
         </View>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -10,15 +10,14 @@ import {
 } from "react-native";
 import Slider from "@react-native-community/slider";
 import SongButton from "@/components/buttons/SongButton";
+import BackButton from "@/components/buttons/BackButton";
+import { router, useLocalSearchParams, useRouter } from "expo-router";
 
 const { height, width } = Dimensions.get("window");
 
 const songs = [
   {
     id: "1",
-    title: "title",
-    description: "Jazz 1",
-    time: 320,
     imageUrl: require("@/assets/images/Jazz.png"),
     lyrics:
       "I heard that you're settled down\nThat you found a girl and you're married now\nI heard that your dreams came true\nGuess she gave you things, I didn't give to you\nOld friend, why are you so shy?\nAin't like you to hold back or hide from the light\nI hate to turn up out of the blue, uninvited\nBut I couldn't stay away, I couldn't fight it\nI had hoped you'd see my face\nAnd that you'd be reminded that for me, it isn't over\nNever mind, I'll find someone like you\nI wish nothing but the best for you, too\nDon't forget me, I beg\nI remember you said\nSometimes it lasts in love, but sometimes it hurts instead\nSometimes it lasts in love, but sometimes it hurts instead",
@@ -29,13 +28,28 @@ function Song() {
   const [shufflePressed, setShufflePressed] = useState(true);
   const [currentTime, setCurrentTime] = useState(90);
 
+  const router = useRouter();
+  const { title, description, imageUrl, time } = useLocalSearchParams();
   const handleShufflePress = () => {
     setShufflePressed(!shufflePressed);
   };
 
+  useEffect(() => {
+    console.log("gelenler:", title, description, time, imageUrl);
+  }, [title, description, time, imageUrl]);
+
+  const parsedTime = Number(time);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.top}>
+        <View style={styles.backButton}>
+          <BackButton
+            onPress={() => {
+              router.push("/(tabs)/Discover");
+            }}
+          ></BackButton>
+        </View>
         <View style={styles.albumContainer}>
           <View style={styles.songBox}>
             <Image source={songs[0].imageUrl} style={styles.imageSong} />
@@ -45,8 +59,8 @@ function Song() {
           <View style={styles.buttonContainer}>
             <View style={styles.songTitle}>
               <View style={styles.textContainer}>
-                <Text style={styles.title}>{songs[0].title}</Text>
-                <Text style={styles.description}>{songs[0].description}</Text>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.description}>{description}</Text>
               </View>
               <TouchableOpacity style={styles.button}>
                 <Image
@@ -59,7 +73,7 @@ function Song() {
             <View style={styles.sliderContainer}>
               <Slider
                 minimumValue={0}
-                maximumValue={songs[0].time}
+                maximumValue={parsedTime}
                 value={currentTime}
                 onValueChange={(value) => setCurrentTime(value)}
                 minimumTrackTintColor="#FFF"
@@ -69,11 +83,11 @@ function Song() {
               <View style={styles.timeContainer}>
                 <Text style={styles.timeText}>
                   {Math.floor(currentTime / 60)}:
-                  {("0" + Math.floor(currentTime % 60)).slice(-2)}{" "}
+                  {("0" + Math.floor(currentTime % 60)).slice(-2)}
                 </Text>
                 <Text style={styles.timeText}>
-                  {Math.floor(songs[0].time / 60)}:
-                  {("0" + Math.floor(songs[0].time % 60)).slice(-2)}{" "}
+                  {Math.floor(parsedTime / 60)}:
+                  {("0" + Math.floor(parsedTime % 60)).slice(-2)}
                 </Text>
               </View>
             </View>
@@ -132,6 +146,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginHorizontal: 20,
     height: height * 0.9,
+  },
+  backButton: {
+    marginBottom: 10,
   },
   bottom: {
     backgroundColor: "#071e4a",

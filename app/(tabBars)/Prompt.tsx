@@ -48,14 +48,18 @@ function Prompt() {
     <ScrollView style={styles.container} showsHorizontalScrollIndicator={false}>
       <View style={styles.top}>
         <View style={styles.inputContainer}>
-          <Text style={styles.inputTitle}>Prompt</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={(value) => setText(value)}
-            value={text}
-            multiline={true}
-            textAlignVertical="top"
-          />
+          <View style={styles.inputWrapper}>
+            {text === "" && (
+              <Text style={styles.customPlaceholder}>Prompt</Text>
+            )}
+            <TextInput
+              style={styles.inputPrompt}
+              onChangeText={(value) => setText(value)}
+              value={text}
+              multiline={true}
+              textAlignVertical="top"
+            />
+          </View>
         </View>
       </View>
 
@@ -207,6 +211,27 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     color: "#FFF",
     fontSize: 17,
+  },
+  inputWrapper: {
+    position: "relative",
+    backgroundColor: "#1f287d",
+    borderRadius: 20,
+  },
+  customPlaceholder: {
+    position: "absolute",
+    top: 20,
+    left: 20,
+    color: "#FFF",
+    fontSize: 17,
+    fontWeight: "bold",
+  },
+  inputPrompt: {
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    color: "white",
+    fontSize: 16,
+    height: 150,
   },
 });
 
