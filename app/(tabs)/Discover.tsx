@@ -7,7 +7,6 @@ import {
   ImageBackground,
   Image,
   ScrollView,
-  Animated,
 } from "react-native";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import ButtonGroup from "@/components/Buttons/ButtonGrups";
