@@ -258,7 +258,7 @@ function CategoriesScreen({ route }: Props) {
         <View style={styles.topBox}>
           <BackButton
             onPress={() => {
-              navigation.navigate('Discover');
+              navigation.goBack();
             }}
           />
           <Text style={styles.title}> {category}</Text>

@@ -9,7 +9,7 @@ const { width } = Dimensions.get('window');
 export const createStyles = (theme: Theme, insets: any) => {
   return StyleSheet.create({
     container: {
-      marginTop: 10,
+      marginTop: 15,
       alignItems: 'center',
       flex: 1,
     },

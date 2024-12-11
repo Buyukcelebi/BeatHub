@@ -5,10 +5,19 @@ import { View, Text, Image } from 'react-native';
 import { useStyles } from './LibraryStyles';
 
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
+import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
+import MiniMusicPlayer from '../Players/MiniPlayer';
 
 function Library() {
   const styles = useStyles();
   const navigation = useNavigation();
+
+  const { currentSong, isPlayerVisible, setIsPlayerVisible, setCurrentSong } = useMusicPlayer();
+
+  const handleClosePlayer = (song: any) => {
+    setIsPlayerVisible(false);
+    setCurrentSong(null);
+  };
 
   return (
     <View style={styles.container}>
@@ -29,6 +38,13 @@ function Library() {
           />
         </View>
       </View>
+      {currentSong && (
+        <MiniMusicPlayer
+          isVisible={isPlayerVisible}
+          onClose={handleClosePlayer}
+          song={currentSong}
+        />
+      )}
     </View>
   );
 }

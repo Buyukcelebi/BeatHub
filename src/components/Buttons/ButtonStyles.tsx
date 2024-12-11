@@ -8,6 +8,7 @@ export const createStyles = (theme: Theme, insets: any) => {
   return StyleSheet.create({
     buttonContainer: {
       alignItems: 'center',
+      flexDirection: 'row',
     },
     backButton: {
       alignItems: 'center',
@@ -70,6 +71,7 @@ export const createStyles = (theme: Theme, insets: any) => {
       borderRadius: 90,
       borderColor: '#000000',
       alignItems: 'center',
+
       backgroundColor: '#ffffff',
       width: '23%',
       marginHorizontal: 7,

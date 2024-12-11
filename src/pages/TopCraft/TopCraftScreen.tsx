@@ -197,7 +197,7 @@ function TopCraft() {
         <View style={styles.topBox}>
           <BackButton
             onPress={() => {
-              navigation.navigate('Discover');
+              navigation.goBack();
             }}
           />
           <Text style={styles.title}>Top Craft</Text>

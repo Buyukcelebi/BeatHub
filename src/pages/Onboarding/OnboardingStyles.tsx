@@ -10,6 +10,8 @@ export const createStyles = (theme: Theme, insets: any) => {
       flex: 1,
       backgroundColor: theme.colors.background,
       paddingVertical: theme.spacing.md,
+      marginTop: theme.spacing.xl,
+      marginBottom: theme.spacing.md,
     },
     entryTitle: {
       ...theme.typography.h1,

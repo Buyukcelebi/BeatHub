@@ -25,20 +25,21 @@ export default function WelcomeOnboardingScreen() {
       duration={isAndroid ? 500 : 3000}
       style={styles.pageContainer}>
       <StatusBar hidden />
-
-      <Text style={styles.entryTitle}>{t('Welcome to AI Song')}</Text>
-      <Text style={styles.subTitle}>
-        {t('Just write a few words and we will create a song for you')}
-      </Text>
-      <Text style={styles.entryDescription}>
-        {t('Prompt:')}
-        <Text style={styles.promptText}>
-          {t('A jazz tune about the fleeting beauty of a summer romance')}
+      <View>
+        <Text style={styles.entryTitle}>{t('Welcome to AI Song')}</Text>
+        <Text style={styles.subTitle}>
+          {t('Just write a few words and we will create a song for you')}
         </Text>
-      </Text>
+        <Text style={styles.entryDescription}>
+          {t('Prompt:')}
+          <Text style={styles.promptText}>
+            {t('A jazz tune about the fleeting beauty of a summer romance')}
+          </Text>
+        </Text>
 
-      <View style={styles.songCarouselWrapper}>
-        <SongCarousel />
+        <View style={styles.songCarouselWrapper}>
+          <SongCarousel />
+        </View>
       </View>
       <Animatable.View animation="fadeIn" duration={1500} delay={2000} style={styles.buttonWrapper}>
         <PrimaryButton buttonText={t('GET STARTED')} onPress={onButtonPress} />

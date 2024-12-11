@@ -1,12 +1,29 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import MiniMusicPlayer from '../Players/MiniPlayer';
 import TwoButtonSwitch from '@/components/TwoButtonSwitch/TwoButtonSwitch';
+import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
 
 function Create() {
+  const { currentSong, isPlayerVisible, setIsPlayerVisible, setCurrentSong } = useMusicPlayer();
+
+  const handleClosePlayer = (song: any) => {
+    setIsPlayerVisible(false);
+    setCurrentSong(null);
+  };
+
   return (
     <View style={styles.container}>
       <TwoButtonSwitch />
+
+      {currentSong && (
+        <MiniMusicPlayer
+          isVisible={isPlayerVisible}
+          onClose={handleClosePlayer}
+          song={currentSong}
+        />
+      )}
     </View>
   );
 }

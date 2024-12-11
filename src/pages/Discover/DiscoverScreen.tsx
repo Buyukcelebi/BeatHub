@@ -12,9 +12,11 @@ import {
 
 import { useStyles } from './DiscoverStyles';
 
+import MiniMusicPlayer from '../Players/MiniPlayer';
 import ButtonGroup from '@/components/Buttons/ButtonGrups';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
 
 type Song = {
   id: number;
@@ -179,22 +181,20 @@ function Discover() {
     navigation.navigate('CategoriesScreen', { category });
   };
 
-  const handlePress1 = (song: any) => {
-    console.log('gidenler:', song.title, song.description, song.imageUrl, song.time);
-    navigation.navigate('SongScreen', {
-      title: song.title,
-      description: song.description,
-      time: song.time,
-      imageUrl: song.imageUrl,
-    });
+  const { currentSong, setCurrentSong, isPlayerVisible, setIsPlayerVisible } = useMusicPlayer();
+
+  const handleSongPress = (song: Song) => {
+    setCurrentSong(song);
+    setIsPlayerVisible(true);
+  };
+
+  const handleClosePlayer = (song: any) => {
+    setIsPlayerVisible(false);
+    setCurrentSong(null);
   };
 
   const renderItem = (item: Song) => (
-    <TouchableOpacity
-      key={item.id}
-      onPress={() => {
-        handlePress1(item);
-      }}>
+    <TouchableOpacity onPress={() => handleSongPress(item)} key={item.id.toString()}>
       <View style={styles.listItem}>
         <ImageBackground source={item.imageUrl} style={styles.listItemImage}>
           <Image source={require('@/assets/images/songPlay.png')} style={styles.icon} />
@@ -220,87 +220,96 @@ function Discover() {
   );
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <View style={styles.top}>
-          <TouchableOpacity style={styles.button}>
-            <Image source={require('@/assets/images/plus.png')} style={styles.buttonImage} />
-            <Text style={styles.title}>Create a new AI song</Text>
-          </TouchableOpacity>
-        </View>
-      }>
-      <View style={styles.scroll}>
-        <View style={styles.flatListTitle}>
-          <Text style={styles.title}>Trending</Text>
-          <ButtonGroup
-            selectedTab={selectedTab}
-            buttonTextLeft="Now"
-            buttonTextMid="Weakly"
-            buttonTextRight="Monthly"
-            onPressLeft={() => setSelectedTab('now')}
-            onPressMid={() => setSelectedTab('weakly')}
-            onPressRight={() => setSelectedTab('monthly')}
-          />
-        </View>
-        {(() => {
-          if (selectedTab === 'now') {
-            return nowData.map(renderItem);
-          } else if (selectedTab === 'weakly') {
-            return weaklyData.map(renderItem);
-          } else {
-            return monthlyData.map(renderItem);
-          }
-        })()}
-
-        {selectedTab === 'now' && (
-          <>
-            <PrimaryButton
-              buttonText="View Full Craft"
-              onPress={() => {
-                navigation.navigate('TopCraftScreen');
-              }}
+    <View style={{ flex: 1 }}>
+      <ParallaxScrollView
+        headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+        headerImage={
+          <View style={styles.top}>
+            <TouchableOpacity style={styles.button}>
+              <Image source={require('@/assets/images/plus.png')} style={styles.buttonImage} />
+              <Text style={styles.title}>Create a new AI song</Text>
+            </TouchableOpacity>
+          </View>
+        }>
+        <View style={styles.scroll}>
+          <View style={styles.flatListTitle}>
+            <Text style={styles.title}>Trending</Text>
+            <ButtonGroup
+              selectedTab={selectedTab}
+              buttonTextLeft="Now"
+              buttonTextMid="Weakly"
+              buttonTextRight="Monthly"
+              onPressLeft={() => setSelectedTab('now')}
+              onPressMid={() => setSelectedTab('weakly')}
+              onPressRight={() => setSelectedTab('monthly')}
             />
-            <View style={styles.catagoriesBox}>
-              <Text style={styles.title}>Top Catagories</Text>
-            </View>
-            <ScrollView
-              style={styles.boxContainer}
-              horizontal
-              showsHorizontalScrollIndicator={false}>
-              <TouchableOpacity style={styles.box} onPress={() => handlePress('Jazz')}>
-                <ImageBackground
-                  source={require('@/assets/images/Jazz.png')}
-                  style={styles.categoriesImage}>
-                  <Text style={styles.boxText}>Jazz</Text>
-                </ImageBackground>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.box} onPress={() => handlePress('Pop')}>
-                <ImageBackground
-                  source={require('@/assets/images/Jazz.png')}
-                  style={styles.categoriesImage}>
-                  <Text style={styles.boxText}>Pop</Text>
-                </ImageBackground>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.box} onPress={() => handlePress('Rock')}>
-                <ImageBackground
-                  source={require('@/assets/images/Jazz.png')}
-                  style={styles.categoriesImage}>
-                  <Text style={styles.boxText}>Rock</Text>
-                </ImageBackground>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.box} onPress={() => handlePress('Rap')}>
-                <ImageBackground
-                  source={require('@/assets/images/Jazz.png')}
-                  style={styles.categoriesImage}>
-                  <Text style={styles.boxText}>Rap</Text>
-                </ImageBackground>
-              </TouchableOpacity>
-            </ScrollView>
-          </>
-        )}
-      </View>
-    </ParallaxScrollView>
+          </View>
+          {(() => {
+            if (selectedTab === 'now') {
+              return nowData.map(renderItem);
+            } else if (selectedTab === 'weakly') {
+              return weaklyData.map(renderItem);
+            } else {
+              return monthlyData.map(renderItem);
+            }
+          })()}
+
+          {selectedTab === 'now' && (
+            <>
+              <PrimaryButton
+                buttonText="View Full Craft"
+                onPress={() => {
+                  navigation.navigate('TopCraftScreen');
+                }}
+              />
+              <View style={styles.catagoriesBox}>
+                <Text style={styles.title}>Top Catagories</Text>
+              </View>
+              <ScrollView
+                style={styles.boxContainer}
+                horizontal
+                showsHorizontalScrollIndicator={false}>
+                <TouchableOpacity style={styles.box} onPress={() => handlePress('Jazz')}>
+                  <ImageBackground
+                    source={require('@/assets/images/Jazz.png')}
+                    style={styles.categoriesImage}>
+                    <Text style={styles.boxText}>Jazz</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.box} onPress={() => handlePress('Pop')}>
+                  <ImageBackground
+                    source={require('@/assets/images/Jazz.png')}
+                    style={styles.categoriesImage}>
+                    <Text style={styles.boxText}>Pop</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.box} onPress={() => handlePress('Rock')}>
+                  <ImageBackground
+                    source={require('@/assets/images/Jazz.png')}
+                    style={styles.categoriesImage}>
+                    <Text style={styles.boxText}>Rock</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.box} onPress={() => handlePress('Rap')}>
+                  <ImageBackground
+                    source={require('@/assets/images/Jazz.png')}
+                    style={styles.categoriesImage}>
+                    <Text style={styles.boxText}>Rap</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+              </ScrollView>
+            </>
+          )}
+        </View>
+      </ParallaxScrollView>
+      {isPlayerVisible && currentSong && (
+        <MiniMusicPlayer
+          isVisible={isPlayerVisible}
+          onClose={handleClosePlayer}
+          song={currentSong}
+        />
+      )}
+    </View>
   );
 }
 
