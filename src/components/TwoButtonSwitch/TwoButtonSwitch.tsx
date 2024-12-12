@@ -4,7 +4,6 @@ import { View, Text, TouchableOpacity, Animated, ScrollView } from 'react-native
 import Lyrics from './Lyrics';
 import Prompt from './Prompt';
 import { useStyles } from './TwoButtonSwitchStyles';
-
 import useTheme from '@/theme/useTheme';
 
 const TwoButtonSwitch = () => {
@@ -34,11 +33,9 @@ const TwoButtonSwitch = () => {
           <Animated.View
             style={[styles.switchBackground, { transform: [{ translateX: buttonTranslateX }] }]}
           />
-
           <TouchableOpacity style={styles.switchButton} onPress={() => switchHandler(true)}>
             <Text style={isLeftButtonActive ? styles.activeText : styles.inactiveText}>Lyrics</Text>
           </TouchableOpacity>
-
           <TouchableOpacity style={styles.switchButton} onPress={() => switchHandler(false)}>
             <Text style={!isLeftButtonActive ? styles.activeText : styles.inactiveText}>
               Prompt

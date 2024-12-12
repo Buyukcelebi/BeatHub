@@ -25,13 +25,13 @@ export default function WelcomeOnboardingScreen() {
       duration={isAndroid ? 500 : 3000}
       style={styles.pageContainer}>
       <StatusBar hidden />
-      <View>
+      <View style={{ flex: 1, position: 'relative' }}>
         <Text style={styles.entryTitle}>{t('Welcome to AI Song')}</Text>
         <Text style={styles.subTitle}>
           {t('Just write a few words and we will create a song for you')}
         </Text>
         <Text style={styles.entryDescription}>
-          {t('Prompt:')}
+          {t('Prompt : ')}
           <Text style={styles.promptText}>
             {t('A jazz tune about the fleeting beauty of a summer romance')}
           </Text>

@@ -65,7 +65,7 @@ function Index() {
         }}
         customAnimation={parallaxLayout(
           {
-            size: theme.window.width,
+            size: theme.window.width * 0.7,
             vertical: false,
           },
           {

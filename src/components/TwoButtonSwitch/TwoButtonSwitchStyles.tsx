@@ -1,28 +1,26 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Theme } from '@/theme/types';
 import useThemedStyles from '@/theme/useThemedStyles';
 
-const { width } = Dimensions.get('window');
-
 export const createStyles = (theme: Theme, insets: any) => {
   return StyleSheet.create({
     container: {
-      marginTop: 15,
+      marginTop: theme.spacing.md,
       alignItems: 'center',
       flex: 1,
     },
     top: {
       flex: 1,
-      backgroundColor: '#071e4a',
+      backgroundColor: theme.colors.background,
     },
     switchContainer: {
-      marginBottom: 15,
-      width: width * 0.65,
-      height: 45,
-      backgroundColor: '#1f287d',
-      borderRadius: 20,
+      marginBottom: theme.spacing.md,
+      width: theme.window.width * 0.65,
+      marginTop: theme.spacing.md,
+      backgroundColor: theme.colors.surfaceVariant,
+      borderRadius: theme.borderRadius.lg,
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -31,20 +29,23 @@ export const createStyles = (theme: Theme, insets: any) => {
       position: 'absolute',
       width: '50%',
       height: '100%',
-      backgroundColor: '#2cbece',
-      borderRadius: 20,
+      backgroundColor: theme.colors.primary,
+      borderRadius: theme.borderRadius.lg,
     },
     switchButton: {
       flex: 1,
       justifyContent: 'center',
+      paddingVertical: theme.spacing.xs,
       alignItems: 'center',
     },
     activeText: {
-      color: '#FFF',
+      color: theme.colors.surface,
+      ...theme.typography.button,
       fontWeight: 'bold',
     },
     inactiveText: {
-      color: '#FFF',
+      color: theme.colors.text,
+      ...theme.typography.button,
     },
   });
 };

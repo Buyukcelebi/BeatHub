@@ -94,12 +94,7 @@ function Lyrics() {
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <TouchableOpacity
-              style={[
-                styles.borderButtons,
-                {
-                  backgroundColor: selectedMoods.includes(item.id) ? '#2cbece' : '#1f287d',
-                },
-              ]}
+              style={[styles.borderButtons, selectedMoods.includes(item.id) && styles.activeButton]}
               onPress={() => handleMoodSelection(item.id)}>
               <Text style={styles.description}>{item.name}</Text>
             </TouchableOpacity>

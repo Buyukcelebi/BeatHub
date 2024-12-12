@@ -10,8 +10,6 @@ export const createStyles = (theme: Theme, insets: any) => {
       flex: 1,
       backgroundColor: theme.colors.background,
       paddingVertical: theme.spacing.md,
-      marginTop: theme.spacing.xl,
-      marginBottom: theme.spacing.md,
     },
     entryTitle: {
       ...theme.typography.h1,
@@ -27,14 +25,13 @@ export const createStyles = (theme: Theme, insets: any) => {
       marginHorizontal: theme.spacing.md,
     },
     entryDescription: {
-      ...theme.typography.body,
       color: theme.colors.textSecondary,
       textAlign: 'center',
       marginTop: theme.spacing.md,
       marginHorizontal: theme.spacing.md,
     },
     promptText: {
-      ...theme.typography.body,
+      fontSize: 13,
       color: theme.colors.primary,
       fontWeight: '500',
     },
@@ -43,15 +40,19 @@ export const createStyles = (theme: Theme, insets: any) => {
       flex: 1,
     },
     buttonFooter: {
-      ...theme.typography.body,
+      fontSize: 11,
       color: theme.colors.textSecondary,
       textAlign: 'center',
       marginHorizontal: theme.spacing.md,
     },
     buttonWrapper: {
-      flex: 1,
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
       marginHorizontal: theme.spacing.md,
-      justifyContent: 'flex-end',
+      paddingBottom: theme.spacing.md,
+      zIndex: 1,
     },
     lottie: {
       width: theme.window.width,

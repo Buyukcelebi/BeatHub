@@ -4,18 +4,27 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Theme } from '@/theme/types';
 import useThemedStyles from '@/theme/useThemedStyles';
 
+const HEADER_HEIGHT = 350;
+
 export const createStyles = (theme: Theme, insets: any) => {
   return StyleSheet.create({
     container: {
-      backgroundColor: '#071e4a',
+      backgroundColor: theme.colors.background,
       flex: 1,
     },
     header: {
-      height: 350,
+      height: HEADER_HEIGHT,
       overflow: 'hidden',
     },
     content: {
-      backgroundColor: '#071e4a',
+      backgroundColor: theme.colors.background,
+      borderTopLeftRadius: theme.borderRadius.xl,
+      borderTopRightRadius: theme.borderRadius.xl,
+      marginTop: -theme.spacing.lg,
+    },
+    headerBackground: {
+      ...StyleSheet.absoluteFillObject,
+      backgroundColor: theme.colors.primary,
     },
   });
 };

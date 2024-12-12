@@ -1837,7 +1837,7 @@ PODS:
   - RNPurchases (8.3.0):
     - PurchasesHybridCommon (= 13.12.0)
     - React-Core
-  - RNReanimated (3.16.3):
+  - RNReanimated (3.16.4):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1857,10 +1857,10 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated (= 3.16.3)
-    - RNReanimated/worklets (= 3.16.3)
+    - RNReanimated/reanimated (= 3.16.4)
+    - RNReanimated/worklets (= 3.16.4)
     - Yoga
-  - RNReanimated/reanimated (3.16.3):
+  - RNReanimated/reanimated (3.16.4):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1880,9 +1880,9 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated/apple (= 3.16.3)
+    - RNReanimated/reanimated/apple (= 3.16.4)
     - Yoga
-  - RNReanimated/reanimated/apple (3.16.3):
+  - RNReanimated/reanimated/apple (3.16.4):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1903,7 +1903,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNReanimated/worklets (3.16.3):
+  - RNReanimated/worklets (3.16.4):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2324,11 +2324,11 @@ SPEC CHECKSUMS:
   RNDeviceInfo: 825f0d2f4381327317f12d1522720a8f76e6a19e
   RNGestureHandler: 511250b190a284388f9dd0d2e56c1df76f14cfb8
   RNPurchases: ef18f38ddd0f28edbddfd8225e76cb134f4d0a71
-  RNReanimated: 365e7d6c1ed443cf8e1b7ba4f0b15dd9f82f052a
+  RNReanimated: 0b444d158bbcbc387a75b3e8365829ab0f288ca3
   RNScreens: e6f9bc3a41be76af2ba0a815ea299a0000b1c838
   RNSound: 6c156f925295bdc83e8e422e7d8b38d33bc71852
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  Yoga: f6dc1b6029519815d5516a1241821c6a9074af6d
+  Yoga: 3deb2471faa9916c8a82dda2a22d3fba2620ad37
 
 PODFILE CHECKSUM: 3df9967ef0c224e5dee3410c12543851fb6037c3
 

@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
+
+import { useStyles } from './ButtonStyles';
 
 type ButtonGroupProps = {
   buttonTextLeft: string;
@@ -20,66 +22,33 @@ const ButtonGroup = ({
   onPressRight,
   onPressMid,
 }: ButtonGroupProps): React.JSX.Element => {
+  const styles = useStyles();
+
   return (
-    <View style={styles.buttonContainer}>
+    <View style={styles.buttonGroupContainer}>
       <TouchableOpacity
-        style={[styles.navButtonNow, selectedTab === 'now' && styles.navButtonSelected]}
+        style={[styles.navButton, selectedTab === 'now' && styles.navButtonSelected]}
         onPress={onPressLeft}>
-        <Text style={styles.navButtonText}>{buttonTextLeft}</Text>
+        <Text style={[styles.navButtonText, selectedTab === 'now' && styles.selectedText]}>
+          {buttonTextLeft}
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={[styles.navButtonWeakly, selectedTab === 'weakly' && styles.navButtonSelected]}
+        style={[styles.navButton, selectedTab === 'weakly' && styles.navButtonSelected]}
         onPress={onPressMid}>
-        <Text style={styles.navButtonText}>{buttonTextMid}</Text>
+        <Text style={[styles.navButtonText, selectedTab === 'weakly' && styles.selectedText]}>
+          {buttonTextMid}
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={[styles.navButtonMonthly, selectedTab === 'monthly' && styles.navButtonSelected]}
+        style={[styles.navButton, selectedTab === 'monthly' && styles.navButtonSelected]}
         onPress={onPressRight}>
-        <Text style={styles.navButtonText}>{buttonTextRight}</Text>
+        <Text style={[styles.navButtonText, selectedTab === 'monthly' && styles.selectedText]}>
+          {buttonTextRight}
+        </Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  navButtonNow: {
-    backgroundColor: '#2cbece',
-    borderRadius: 20,
-    marginRight: 10,
-    height: 30,
-    width: 70,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  navButtonWeakly: {
-    backgroundColor: '#2cbece',
-    borderRadius: 20,
-    marginRight: 10,
-    height: 30,
-    width: 70,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  navButtonMonthly: {
-    backgroundColor: '#2cbece',
-    borderRadius: 20,
-    height: 30,
-    width: 70,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  navButtonSelected: {
-    backgroundColor: '#ffffff',
-  },
-  navButtonText: {
-    color: '#180606',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-});
 
 export default ButtonGroup;

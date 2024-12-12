@@ -11,10 +11,11 @@ export const createStyles = (theme: Theme, insets: any) => {
     },
     top: {
       flex: 1,
-      backgroundColor: '#071e4a',
+      backgroundColor: theme.colors.surface,
+      paddingVertical: 10,
     },
     bottom: {
-      backgroundColor: '#071e4a',
+      backgroundColor: theme.colors.background,
       padding: 10,
     },
     boxContainer: {
@@ -26,11 +27,11 @@ export const createStyles = (theme: Theme, insets: any) => {
       left: 0,
       right: 0,
       alignItems: 'center',
-      color: '#0022e0',
-      backgroundColor: 'rgba(46, 71, 59, 0.5)',
+      color: theme.colors.info,
+      backgroundColor: theme.colors.overlay,
     },
     time: {
-      color: '#FFF',
+      color: theme.colors.text,
     },
     box: {
       marginRight: 20,
@@ -38,13 +39,11 @@ export const createStyles = (theme: Theme, insets: any) => {
       alignItems: 'center',
     },
     boxText: {
-      color: 'white',
-      fontSize: 18,
-      fontWeight: 'bold',
+      color: theme.colors.text,
+      ...theme.typography.body,
     },
-
     scroll: {
-      paddingBottom: 80,
+      paddingBottom: 10,
       marginRight: 20,
       marginLeft: 20,
     },
@@ -62,7 +61,7 @@ export const createStyles = (theme: Theme, insets: any) => {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#5e2e9c5f',
+      backgroundColor: theme.colors.surfaceVariant,
       borderRadius: 20,
       marginHorizontal: 20,
       marginBottom: 20,
@@ -73,25 +72,27 @@ export const createStyles = (theme: Theme, insets: any) => {
       width: 45,
       height: 45,
       marginBottom: 10,
-      backgroundColor: '#1c0c0c96',
+      backgroundColor: theme.colors.primary,
       borderRadius: 30,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     listItem: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingBottom: 15,
+      paddingBottom: 10,
     },
     categoriesImage: {
-      width: 150,
-      height: 150,
+      width: 100,
+      height: 100,
       borderRadius: 20,
       justifyContent: 'center',
       alignItems: 'center',
       overflow: 'hidden',
     },
     listItemImage: {
-      width: 90,
-      height: 90,
+      width: 55,
+      height: 55,
       borderRadius: 20,
       justifyContent: 'center',
       alignItems: 'center',
@@ -102,38 +103,33 @@ export const createStyles = (theme: Theme, insets: any) => {
       height: 20,
     },
     listItemText: {
-      color: 'white',
-      fontWeight: 'bold',
-      fontSize: 18,
+      color: theme.colors.text,
+      ...theme.typography.body,
     },
     descriptionText: {
-      color: 'lightgray',
-      fontSize: 14,
-      marginTop: 5,
+      color: theme.colors.textSecondary,
+      ...theme.typography.caption,
     },
     repeatText: {
-      color: 'lightgray',
-      fontSize: 14,
+      color: theme.colors.textSecondary,
+      ...theme.typography.caption,
       justifyContent: 'flex-end',
     },
     textContainer: {
-      marginLeft: 15,
+      marginLeft: 10,
       flex: 1,
     },
     countTextContainer: {
-      marginLeft: 15,
+      marginLeft: 10,
       alignItems: 'center',
     },
-
     tabTitle: {
-      color: 'white',
-      fontSize: 30,
-      fontWeight: '700',
+      color: theme.colors.text,
+      ...theme.typography.title,
     },
     title: {
-      color: 'white',
-      fontSize: 20,
-      fontWeight: 'bold',
+      ...theme.typography.subtitle,
+      color: theme.colors.primary,
     },
     playIcon: {
       width: 10,
@@ -143,6 +139,12 @@ export const createStyles = (theme: Theme, insets: any) => {
     playCountContainer: {
       flexDirection: 'row',
       alignItems: 'center',
+    },
+    headerBackground: {
+      backgroundColor: theme.colors.surfaceVariant,
+    },
+    plusIcon: {
+      color: theme.colors.surface,
     },
   });
 };

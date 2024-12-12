@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import MiniMusicPlayer from '../Players/MiniPlayer';
-import TwoButtonSwitch from '@/components/TwoButtonSwitch/TwoButtonSwitch';
 import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
+import MiniMusicPlayer from '../Players/MiniPlayer';
+
+import TwoButtonSwitch from '@/components/TwoButtonSwitch/TwoButtonSwitch';
 
 function Create() {
   const { currentSong, isPlayerVisible, setIsPlayerVisible, setCurrentSong } = useMusicPlayer();

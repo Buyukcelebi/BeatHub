@@ -80,6 +80,21 @@ export interface ThemeTypography {
     fontFamily: string;
     fontWeight: FontWeight;
   };
+  title: {
+    fontSize: number;
+    fontFamily: string;
+    fontWeight: FontWeight;
+  };
+  subtitle: {
+    fontSize: number;
+    fontFamily: string;
+    fontWeight: FontWeight;
+  };
+  caption: {
+    fontSize: number;
+    fontFamily: string;
+    fontWeight: FontWeight;
+  };
 }
 
 export interface ThemeShadows {

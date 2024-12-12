@@ -64,12 +64,7 @@ function Prompt() {
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <TouchableOpacity
-              style={[
-                styles.borderButtons,
-                {
-                  backgroundColor: selectedMood === item.id ? '#2cbece' : '#1f287d',
-                },
-              ]}
+              style={[styles.borderButtons, selectedMood === item.id && styles.activeButton]}
               onPress={() => setSelectedMood(item.id)}>
               <Text style={styles.description}>{item.name}</Text>
             </TouchableOpacity>

@@ -100,6 +100,30 @@ export const createStyles = (theme: Theme, insets: any) => {
       width: 25,
       height: 25,
     },
+    buttonGroupContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    navButton: {
+      backgroundColor: theme.colors.primary,
+      borderRadius: theme.borderRadius.lg,
+      marginRight: theme.spacing.sm,
+      paddingVertical: theme.spacing.xs,
+      paddingHorizontal: theme.spacing.sm,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    navButtonSelected: {
+      backgroundColor: theme.colors.surface,
+    },
+    navButtonText: {
+      color: theme.colors.surface,
+      ...theme.typography.caption,
+      fontWeight: 'bold',
+    },
+    selectedText: {
+      color: theme.colors.primary,
+    },
   });
 };
 

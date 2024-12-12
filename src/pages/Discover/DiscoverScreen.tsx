@@ -9,14 +9,15 @@ import {
   ScrollView,
   ImageSourcePropType,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { useStyles } from './DiscoverStyles';
-
+import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
 import MiniMusicPlayer from '../Players/MiniPlayer';
+
 import ButtonGroup from '@/components/Buttons/ButtonGrups';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
 
 type Song = {
   id: number;
@@ -220,13 +221,15 @@ function Discover() {
   );
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <ParallaxScrollView
         headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
         headerImage={
           <View style={styles.top}>
             <TouchableOpacity style={styles.button}>
-              <Image source={require('@/assets/images/plus.png')} style={styles.buttonImage} />
+              <View style={styles.buttonImage}>
+                <Ionicons name="add" size={30} color={styles.plusIcon.color} />
+              </View>
               <Text style={styles.title}>Create a new AI song</Text>
             </TouchableOpacity>
           </View>

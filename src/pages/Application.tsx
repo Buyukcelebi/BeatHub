@@ -13,9 +13,10 @@ import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import CreateScreen from './Create/CreateScreen';
-import LibraryScreen from './Library/LibraryScreen';
 import DiscoverScreen from './Discover/DiscoverScreen';
+import LibraryScreen from './Library/LibraryScreen';
 import WelcomeOnboardingScreen from './Onboarding/WelcomeOnboardingScreen';
+import { MusicPlayerProvider } from '../contexts/MusicPlayerContext';
 
 import DeveloperButton from '@/components/Buttons/DeveloperButton';
 import { useInitialization } from '@/hooks/useInitialization';
@@ -26,7 +27,6 @@ import Providers from '@/pages/Providers';
 import SongScreen from '@/pages/Song/SongScreen';
 import TopCraftScreen from '@/pages/TopCraft/TopCraftScreen';
 import useTheme from '@/theme/useTheme';
-import { MusicPlayerProvider } from '../contexts/MusicPlayerContext';
 export const navigationRef = createNavigationContainerRef();
 
 const useIsInitialized = () => {
@@ -45,59 +45,48 @@ const HomeIcon1 = ({ color }: { color: string }) => <Icon name="home" size={24} 
 type RootStackParamList = StaticParamList<typeof RootStack>;
 type TabParamList = StaticParamList<typeof HomeTabs>;
 
-const HomeTabs = createBottomTabNavigator({
-  screenOptions: ({ route }) => ({
-    headerShown: true,
-    headerTitleAlign: 'left',
+function TabNavigator() {
+  return createBottomTabNavigator({
+    screenOptions: ({ route }) => {
+      const theme = useTheme();
+      return {
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: theme.colors.surface,
+          borderTopWidth: 0,
+        },
+        tabBarActiveTintColor: theme.colors.primary,
+        tabBarInactiveTintColor: theme.colors.textSecondary,
+        tabBarIcon: ({ color, focused }) => {
+          let iconName = '';
+          const iconSize = 24;
 
-    tabBarActiveTintColor: '#2cbece',
-    headerStyle: {
-      backgroundColor: '#071e4a',
+          switch (route.name) {
+            case 'Discover':
+              iconName = 'search';
+              break;
+            case 'Library':
+              iconName = 'book';
+              break;
+            case 'Create':
+              iconName = 'plus-circle';
+              break;
+          }
+
+          const iconColor = focused ? theme.colors.primary : color;
+          return <Icon name={iconName} size={iconSize} color={iconColor} />;
+        },
+      };
     },
-    headerTitleStyle: {
-      color: 'white',
-      fontSize: 30,
-      fontWeight: 'bold',
+    screens: {
+      Discover: DiscoverScreen,
+      Create: CreateScreen,
+      Library: LibraryScreen,
     },
-    tabBarIcon: ({ color, focused }) => {
-      let iconName = '';
-      const iconSize = 24;
+  });
+}
 
-      switch (route.name) {
-        case 'Discover':
-          iconName = 'search';
-          break;
-        case 'Library':
-          iconName = 'book';
-          break;
-        case 'Create':
-          iconName = 'plus-circle';
-          break;
-      }
-
-      const iconColor = focused ? '#FFD700' : color;
-      const size = iconSize;
-
-      return <Icon name={iconName} size={size} color={iconColor} />;
-    },
-
-    tabBarStyle: {
-      backgroundColor: 'rgba(31, 40, 125, 0.8)',
-      borderTopWidth: 0,
-      elevation: 0,
-      shadowOpacity: 0,
-      position: 'absolute',
-      borderRadius: 20,
-      paddingTop: 10,
-    },
-  }),
-
-  screens: {
-    Discover: DiscoverScreen,
-    Create: CreateScreen,
-    Library: LibraryScreen,
-  },
-});
+const HomeTabs = TabNavigator();
 
 const RootStack = createNativeStackNavigator({
   screenOptions: {
