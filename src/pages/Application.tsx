@@ -5,13 +5,14 @@ import {
   createNavigationContainerRef,
   StaticParamList,
   NavigationContainerRef,
+  useNavigation,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
+import { useStyles } from './ApplicationStyles';
 import CreateScreen from './Create/CreateScreen';
 import DiscoverScreen from './Discover/DiscoverScreen';
 import LibraryScreen from './Library/LibraryScreen';
@@ -24,9 +25,14 @@ import CategoriesScreen from '@/pages/Categories/CategoriesScreen';
 import DeveloperScreen from '@/pages/Developer/DeveloperScreen';
 import CoverOnboardingScreen from '@/pages/Onboarding/CoverOnboardingScreen';
 import Providers from '@/pages/Providers';
-import SongScreen from '@/pages/Song/SongScreen';
+import SongScreenMiniPlayer from '@/pages/Song/SongScreenMiniPlayer';
+import SongScreen from '@/pages/Song1/SongScreen';
 import TopCraftScreen from '@/pages/TopCraft/TopCraftScreen';
 import useTheme from '@/theme/useTheme';
+import SettingsScreen from './Settings/SettingsScreen';
+import * as Animatable from 'react-native-animatable';
+
+import SubscriptionScreen from './Subscription/SubscriptionScreen';
 export const navigationRef = createNavigationContainerRef();
 
 const useIsInitialized = () => {
@@ -39,9 +45,6 @@ const useIsUnInitialized = () => {
   return !isInitialized;
 };
 
-const HomeIcon = ({ color }: { color: string }) => <Icon name="home" size={24} color={color} />;
-const HomeIcon1 = ({ color }: { color: string }) => <Icon name="home" size={24} color={color} />;
-
 type RootStackParamList = StaticParamList<typeof RootStack>;
 type TabParamList = StaticParamList<typeof HomeTabs>;
 
@@ -49,6 +52,8 @@ function TabNavigator() {
   return createBottomTabNavigator({
     screenOptions: ({ route }) => {
       const theme = useTheme();
+      const styles = useStyles();
+      const navigation = useNavigation();
       return {
         headerShown: false,
         tabBarStyle: {
@@ -76,12 +81,62 @@ function TabNavigator() {
           const iconColor = focused ? theme.colors.primary : color;
           return <Icon name={iconName} size={iconSize} color={iconColor} />;
         },
+        headerTitleAlign: 'left',
+        headerTitleStyle: {
+          fontSize: theme.typography.h3.fontSize,
+          fontFamily: theme.typography.h3.fontFamily,
+          fontWeight: theme.typography.h1.fontWeight,
+          color: theme.colors.primary,
+        },
+        headerStyle: {
+          backgroundColor: theme.colors.background,
+          elevation: 0,
+          shadowOpacity: 0,
+        },
+
+        headerRight: () => (
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+            <Animatable.View
+              animation="pulse"
+              iterationCount="infinite"
+              style={styles.proButtonWrapper}>
+              <TouchableOpacity
+                style={styles.proButton}
+                onPress={() => navigation?.navigate('SubscriptionScreen')}>
+                <Text style={styles.proText}>
+                  <Icon name="star" size={15} style={styles.proIcon} /> {'PRO'}
+                </Text>
+              </TouchableOpacity>
+            </Animatable.View>
+
+            <TouchableOpacity
+              style={styles.settingsWrapper}
+              onPress={() => navigation?.navigate('SettingsScreen')}>
+              <Icon name="gear" size={18} style={styles.settingsIcon} />
+            </TouchableOpacity>
+          </View>
+        ),
       };
     },
     screens: {
-      Discover: DiscoverScreen,
-      Create: CreateScreen,
-      Library: LibraryScreen,
+      Discover: {
+        screen: DiscoverScreen,
+        options: {
+          headerShown: true,
+        },
+      },
+      Create: {
+        screen: CreateScreen,
+        options: {
+          headerShown: true,
+        },
+      },
+      Library: {
+        screen: LibraryScreen,
+        options: {
+          headerShown: true,
+        },
+      },
     },
   });
 }
@@ -104,8 +159,11 @@ const RootStack = createNativeStackNavigator({
       if: useIsInitialized,
       screens: {
         HomeScreen: HomeTabs as typeof HomeTabs,
-        CategoriesScreen,
+        SettingsScreen,
+        SubscriptionScreen,
         SongScreen,
+        SongScreenMiniPlayer,
+        CategoriesScreen,
         TopCraftScreen,
       },
     },

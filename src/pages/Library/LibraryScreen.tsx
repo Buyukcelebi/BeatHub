@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { View, Text, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import { useStyles } from './LibraryStyles';
-
+import { Octicons as Icon } from '@expo/vector-icons';
+import * as Animatable from 'react-native-animatable';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
 import MiniMusicPlayer from '../Players/MiniPlayer';
@@ -13,11 +14,7 @@ function Library() {
   const navigation = useNavigation();
 
   const { currentSong, isPlayerVisible, setIsPlayerVisible, setCurrentSong } = useMusicPlayer();
-
-  const handleClosePlayer = (song: any) => {
-    setIsPlayerVisible(false);
-    setCurrentSong(null);
-  };
+  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -40,9 +37,9 @@ function Library() {
       </View>
       {currentSong && (
         <MiniMusicPlayer
-          isVisible={isPlayerVisible}
-          onClose={handleClosePlayer}
           song={currentSong}
+          isPlaying={isPlaying}
+          onPlayPause={() => setIsPlaying(!isPlaying)}
         />
       )}
     </View>

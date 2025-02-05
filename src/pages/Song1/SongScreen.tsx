@@ -1,5 +1,5 @@
 import Slider from '@react-native-community/slider';
-import { StaticScreenProps, useNavigation } from '@react-navigation/native';
+import { StaticScreenProps, useNavigation, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity, ScrollView, ImageSourcePropType } from 'react-native';
 
@@ -8,8 +8,13 @@ import { useStyles } from './SongStyles';
 import BackButton from '@/components/Buttons/BackButton';
 import SongButton from '@/components/Buttons/SongButton';
 
-function Song({ song, backButtonPress }) {
+function SongScreen({ backButtonPress }) {
   const styles = useStyles();
+
+  const route = useRoute();
+  const { song } = route.params;
+  const navigation = useNavigation();
+
   const [shufflePressed, setShufflePressed] = useState(true);
   const [currentTime, setCurrentTime] = useState(90);
 
@@ -23,7 +28,7 @@ function Song({ song, backButtonPress }) {
     <ScrollView style={styles.container}>
       <View style={styles.top}>
         <View style={styles.backButton}>
-          <BackButton onPress={backButtonPress} />
+          <BackButton onPress={() => navigation.goBack()} />
         </View>
         <View style={styles.albumContainer}>
           <View style={styles.songBox}>
@@ -103,4 +108,4 @@ function Song({ song, backButtonPress }) {
   );
 }
 
-export default Song;
+export default SongScreen;

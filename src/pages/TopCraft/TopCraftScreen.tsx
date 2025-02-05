@@ -15,6 +15,7 @@ import { useStyles } from './TopCraftStyles';
 
 import BackButton from '@/components/Buttons/BackButton';
 import ButtonGroup from '@/components/Buttons/ButtonGrups';
+import { useMusicPlayer } from '@/contexts/MusicPlayerContext';
 
 type Item = {
   id: string;
@@ -164,7 +165,9 @@ function TopCraft() {
   const navigation = useNavigation();
 
   const renderItem = ({ item }: { item: Item }) => (
-    <TouchableOpacity key={item.id}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('SongScreen', { song: item })}
+      key={item.id}>
       <View style={styles.listItem}>
         <ImageBackground
           source={item.imageUrl}

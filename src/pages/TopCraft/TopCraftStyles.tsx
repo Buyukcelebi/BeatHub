@@ -11,7 +11,7 @@ export const createStyles = (theme: Theme, insets: any) => {
     },
     top: {
       flex: 1,
-      backgroundColor: '#071e4a',
+      backgroundColor: theme.colors.background,
       paddingTop: 30,
     },
     topBox: {
@@ -28,13 +28,13 @@ export const createStyles = (theme: Theme, insets: any) => {
     },
     bottom: {
       flex: 6,
-      backgroundColor: '#071e4a',
+      backgroundColor: theme.colors.background,
     },
     title: {
-      color: 'white',
-      fontSize: 23,
-      fontWeight: 'bold',
-      paddingLeft: 20,
+      color: theme.colors.primary,
+      fontSize: theme.typography.h2.fontSize,
+      fontWeight: theme.typography.h2.fontWeight,
+      paddingLeft: theme.spacing.md,
     },
     buttonContainer: {
       flex: 1,
@@ -61,21 +61,20 @@ export const createStyles = (theme: Theme, insets: any) => {
       height: 20,
     },
     listItemText: {
-      color: 'white',
-      fontWeight: 'bold',
-      fontSize: 18,
+      color: theme.colors.text,
+      ...theme.typography.body,
     },
     descriptionText: {
-      color: 'lightgray',
-      fontSize: 14,
-      marginTop: 5,
+      color: theme.colors.textSecondary,
+      ...theme.typography.caption,
     },
     repeatText: {
-      color: 'lightgray',
-      fontSize: 14,
+      color: theme.colors.textSecondary,
+      ...theme.typography.caption,
+      justifyContent: 'flex-end',
     },
     textContainer: {
-      marginLeft: 15,
+      marginLeft: theme.spacing.sm,
       flex: 1,
     },
     timeContainer: {
@@ -84,10 +83,11 @@ export const createStyles = (theme: Theme, insets: any) => {
       left: 0,
       right: 0,
       alignItems: 'center',
-      backgroundColor: 'rgba(46, 71, 59, 0.5)',
+      backgroundColor: theme.colors.overlay,
     },
     time: {
-      color: '#FFF',
+      color: theme.colors.white,
+      fontSize: theme.typography.caption.fontSize,
     },
     playIcon: {
       width: 10,

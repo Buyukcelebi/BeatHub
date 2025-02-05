@@ -21,6 +21,11 @@ export const createStyles = (theme: Theme, insets: any) => {
     boxContainer: {
       flexDirection: 'row',
     },
+    title: {
+      color: theme.colors.primary,
+      fontSize: theme.typography.h4.fontSize,
+      fontWeight: theme.typography.h4.fontWeight,
+    },
     timeContainer: {
       position: 'absolute',
       bottom: 0,
@@ -39,8 +44,8 @@ export const createStyles = (theme: Theme, insets: any) => {
       alignItems: 'center',
     },
     boxText: {
-      color: theme.colors.text,
-      ...theme.typography.body,
+      color: theme.colors.white,
+      ...theme.typography.h4,
     },
     scroll: {
       paddingBottom: 10,
@@ -122,14 +127,6 @@ export const createStyles = (theme: Theme, insets: any) => {
     countTextContainer: {
       marginLeft: 10,
       alignItems: 'center',
-    },
-    tabTitle: {
-      color: theme.colors.text,
-      ...theme.typography.title,
-    },
-    title: {
-      ...theme.typography.subtitle,
-      color: theme.colors.primary,
     },
     playIcon: {
       width: 10,

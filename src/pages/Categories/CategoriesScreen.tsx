@@ -13,7 +13,11 @@ import {
 
 import { useStyles } from './CategoriesStyles';
 
+import SongScreen from '../Song1/SongScreen';
+
 import BackButton from '@/components/Buttons/BackButton';
+
+import MiniPlayer from '../Players/MiniPlayer';
 
 type Props = StaticScreenProps<{
   category: string;
@@ -77,6 +81,7 @@ const popData = [
     title: 'Latest Song 1',
     description: 'Rock 1',
     count: '2803099',
+    time: '30',
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -84,6 +89,7 @@ const popData = [
     title: 'Latest Song 2',
     description: 'Rock 2',
     count: '2803099',
+    time: '30',
     imageUrl: require('@/assets/images/Jazz.png'),
   },
   {
@@ -166,6 +172,7 @@ const rapData = [
     title: 'Latest Song 3',
     description: 'Rock 1',
     count: '2803099',
+    time: '200',
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -173,6 +180,7 @@ const rapData = [
     title: 'Latest Song 2',
     description: 'Rock 2',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -180,6 +188,7 @@ const rapData = [
     title: 'Latest Song 3',
     description: 'Rock 3',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -187,6 +196,7 @@ const rapData = [
     title: 'Latest Song 4',
     description: 'Rock 4',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -194,6 +204,7 @@ const rapData = [
     title: 'Latest Song 5',
     description: 'Rock 5',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/Jazz.png'),
   },
   {
@@ -201,13 +212,13 @@ const rapData = [
     title: 'Latest Song 6',
     description: 'Rock 6',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
 ];
 
 function CategoriesScreen({ route }: Props) {
   const styles = useStyles();
-  const [selectedTab, setSelectedTab] = useState();
   const navigation = useNavigation();
   const { category } = route.params || {};
 
@@ -216,7 +227,9 @@ function CategoriesScreen({ route }: Props) {
   }, [category]);
 
   const renderItem = ({ item }: { item: CategoryItem }) => (
-    <TouchableOpacity key={item.id}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('SongScreen', { song: item })}
+      key={item.id}>
       <View style={styles.listItem}>
         <ImageBackground
           source={item.imageUrl}

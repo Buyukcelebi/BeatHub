@@ -41,7 +41,7 @@ export const createStyles = (theme: Theme, insets: any) => {
       alignItems: 'center',
     },
     inputContainer: {
-      marginTop: theme.spacing.sm,
+      marginTop: theme.spacing.md,
       marginHorizontal: theme.spacing.md,
       backgroundColor: theme.colors.surfaceVariant,
       borderColor: theme.colors.primary,

@@ -84,7 +84,7 @@ function Prompt() {
                 style={[
                   styles.imageGenre,
                   {
-                    borderColor: selectedGenre === item.id ? '#2cbece' : 'transparent',
+                    borderColor: selectedGenre === item.id ? '#5A31F4' : 'transparent',
                     borderWidth: 2,
                   },
                 ]}
@@ -94,7 +94,7 @@ function Prompt() {
                   style={[
                     styles.genreText,
                     {
-                      color: selectedGenre === item.id ? '#2cbece' : 'white',
+                      color: selectedGenre === item.id ? '#5A31F4' : 'white',
                     },
                   ]}>
                   {item.genre}
@@ -104,12 +104,7 @@ function Prompt() {
           )}
         />
 
-        <PrimaryButton
-          buttonText="Create"
-          onPress={() => {
-            // handle press event
-          }}
-        />
+        <PrimaryButton buttonText="Create" onPress={() => {}} />
       </View>
     </ScrollView>
   );

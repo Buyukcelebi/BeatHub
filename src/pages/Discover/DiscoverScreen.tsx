@@ -183,19 +183,15 @@ function Discover() {
   };
 
   const { currentSong, setCurrentSong, isPlayerVisible, setIsPlayerVisible } = useMusicPlayer();
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleSongPress = (song: Song) => {
     setCurrentSong(song);
     setIsPlayerVisible(true);
   };
 
-  const handleClosePlayer = (song: any) => {
-    setIsPlayerVisible(false);
-    setCurrentSong(null);
-  };
-
   const renderItem = (item: Song) => (
-    <TouchableOpacity onPress={() => handleSongPress(item)} key={item.id.toString()}>
+    <TouchableOpacity onPress={() => handleSongPress(item)} key={item.id}>
       <View style={styles.listItem}>
         <ImageBackground source={item.imageUrl} style={styles.listItemImage}>
           <Image source={require('@/assets/images/songPlay.png')} style={styles.icon} />
@@ -307,9 +303,9 @@ function Discover() {
       </ParallaxScrollView>
       {isPlayerVisible && currentSong && (
         <MiniMusicPlayer
-          isVisible={isPlayerVisible}
-          onClose={handleClosePlayer}
           song={currentSong}
+          isPlaying={isPlaying}
+          onPlayPause={() => setIsPlaying(!isPlaying)}
         />
       )}
     </View>

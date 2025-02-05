@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity, Image, FlatList, ScrollView, TextInput } 
 import { useStyles } from './LyricsStyles';
 
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
+import { useRoute } from '@react-navigation/native';
 
 function Lyrics() {
   const styles = useStyles();
@@ -15,13 +16,13 @@ function Lyrics() {
     {
       id: '1',
       name: 'aa',
-      imageUrl: require('@/assets/images/Jazz.png'),
+      imageUrl: require('@/assets/images/jazza.png'),
       genre: 'Jazz',
     },
     {
       id: '2',
       name: 'Motivational',
-      imageUrl: require('@/assets/images/Jazz.png'),
+      imageUrl: require('@/assets/images/popa.png'),
       genre: 'Jazz',
     },
     {
@@ -114,21 +115,13 @@ function Lyrics() {
                 style={[
                   styles.imageGenre,
                   {
-                    borderColor: selectedGenres.includes(item.id) ? '#2cbece' : 'transparent',
+                    borderColor: selectedGenres.includes(item.id) ? '#5A31F4' : 'transparent',
                     borderWidth: 2,
                   },
                 ]}
               />
               <View style={styles.genre}>
-                <Text
-                  style={[
-                    styles.genreText,
-                    {
-                      color: selectedGenres.includes(item.id) ? '#2cbece' : 'white',
-                    },
-                  ]}>
-                  {item.genre}
-                </Text>
+                <Text style={[styles.genreText]}>{item.genre}</Text>
               </View>
             </TouchableOpacity>
           )}
