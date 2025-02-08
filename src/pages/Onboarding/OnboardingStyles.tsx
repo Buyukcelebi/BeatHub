@@ -15,7 +15,7 @@ export const createStyles = (theme: Theme, insets: any) => {
       ...theme.typography.h1,
       color: theme.colors.text,
       textAlign: 'center',
-      marginTop: theme.spacing.sm,
+      marginTop: 50,
     },
     subTitle: {
       ...theme.typography.body,

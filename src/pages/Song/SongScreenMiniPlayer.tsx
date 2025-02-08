@@ -1,5 +1,6 @@
 import Slider from '@react-native-community/slider';
 import { StaticScreenProps, useNavigation, useRoute } from '@react-navigation/native';
+import { Octicons as Icon } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity, ScrollView, ImageSourcePropType } from 'react-native';
 
@@ -24,7 +25,9 @@ function SongMiniPlayer({ backButtonPress, song }) {
     <ScrollView style={styles.container}>
       <View style={styles.top}>
         <View style={styles.backButton}>
-          <BackButton onPress={backButtonPress} />
+          <TouchableOpacity style={styles.settingsWrapper} onPress={backButtonPress}>
+            <Icon name="chevron-down" size={50} style={styles.settingsIcon} />
+          </TouchableOpacity>
         </View>
         <View style={styles.albumContainer}>
           <View style={styles.songBox}>

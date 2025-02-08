@@ -13,6 +13,7 @@ export const createStyles = (theme: Theme, insets: any) => {
       flex: 1,
       backgroundColor: theme.colors.surface,
       paddingVertical: 10,
+      paddingBottom: 20,
     },
     bottom: {
       backgroundColor: theme.colors.background,
@@ -48,7 +49,7 @@ export const createStyles = (theme: Theme, insets: any) => {
       ...theme.typography.h4,
     },
     scroll: {
-      paddingBottom: 10,
+      paddingBottom: 60,
       marginRight: 20,
       marginLeft: 20,
     },
