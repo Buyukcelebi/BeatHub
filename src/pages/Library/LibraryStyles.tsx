@@ -8,42 +8,20 @@ export const createStyles = (theme: Theme) => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.surface,
+      backgroundColor: theme.colors.background,
       padding: theme.spacing.md,
     },
-    proButton: {
-      backgroundColor: theme.colors.success,
-      borderRadius: theme.borderRadius.xl,
-      width: 65,
-      height: 35,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    proButtonWrapper: {
-      flexDirection: 'row-reverse',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: theme.spacing.sm,
-    },
-    proText: {
-      color: theme.colors.white,
-      fontSize: theme.typography.caption.fontSize,
-      fontWeight: 'bold',
-      textAlign: 'center',
-    },
-    proIcon: {
-      marginRight: theme.spacing.xs,
-    },
+
     top: {
       flex: 1.2,
-      backgroundColor: theme.colors.surface,
+      backgroundColor: theme.colors.background,
       justifyContent: 'flex-end',
       alignItems: 'center',
       paddingTop: theme.spacing.xl * 3,
     },
     bottom: {
       flex: 1,
-      backgroundColor: theme.colors.surface,
+      backgroundColor: theme.colors.background,
       padding: theme.spacing.md,
     },
     settingsWrapper: {

@@ -2,7 +2,7 @@ import Slider from '@react-native-community/slider';
 import { StaticScreenProps, useNavigation, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity, ScrollView, ImageSourcePropType } from 'react-native';
-
+import { Octicons as Icon } from '@expo/vector-icons';
 import { useStyles } from './SongStyles';
 
 import BackButton from '@/components/Buttons/BackButton';
@@ -28,7 +28,9 @@ function SongScreen({ backButtonPress }) {
     <ScrollView style={styles.container}>
       <View style={styles.top}>
         <View style={styles.backButton}>
-          <BackButton onPress={() => navigation.goBack()} />
+          <TouchableOpacity style={styles.settingsWrapper} onPress={() => navigation.goBack()}>
+            <Icon name="chevron-left" size={50} style={styles.settingsIcon} />
+          </TouchableOpacity>
         </View>
         <View style={styles.albumContainer}>
           <View style={styles.songBox}>

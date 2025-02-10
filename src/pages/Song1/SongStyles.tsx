@@ -1,6 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
 import { Theme } from '@/theme/types';
 import useThemedStyles from '@/theme/useThemedStyles';
 
@@ -9,23 +8,24 @@ const { height, width } = Dimensions.get('window');
 export const createStyles = (theme: Theme, insets: any) => {
   return StyleSheet.create({
     container: {
-      backgroundColor: '#071e4a',
+      backgroundColor: theme.colors.divider,
+      flex: 1,
     },
     top: {
       flex: 1,
-      paddingTop: 90,
-      backgroundColor: '#071e4a',
+      paddingTop: theme.spacing.sm,
+      backgroundColor: theme.colors.divider,
       justifyContent: 'center',
-      marginHorizontal: 20,
+      marginHorizontal: theme.spacing.md,
       height: height * 0.9,
     },
     backButton: {
-      marginBottom: 10,
+      marginBottom: theme.spacing.sm,
     },
     bottom: {
-      backgroundColor: '#071e4a',
-      marginTop: 20,
-      paddingHorizontal: 35,
+      backgroundColor: theme.colors.divider,
+      marginTop: theme.spacing.md,
+      paddingHorizontal: theme.spacing.lg,
     },
     buttonBox: {
       alignItems: 'center',
@@ -34,6 +34,7 @@ export const createStyles = (theme: Theme, insets: any) => {
       width: width * 0.85,
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: theme.colors.divider,
     },
     bottomContainer: {
       height: 420,
@@ -44,21 +45,19 @@ export const createStyles = (theme: Theme, insets: any) => {
     lyricsContainer: {
       width: width * 0.85,
       height: 350,
-      resizeMode: 'contain',
-      borderRadius: 20,
-      backgroundColor: '#1f287d',
+      borderRadius: theme.borderRadius.lg,
+      backgroundColor: theme.colors.surface,
+      padding: theme.spacing.md,
     },
     lyricsTitle: {
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
-      color: '#FFF',
-      fontSize: 17,
-      fontWeight: 'bold',
-      margin: 10,
-      marginLeft: 15,
+      color: theme.colors.text,
+      fontSize: theme.typography.h3.fontSize,
+      fontWeight: theme.typography.h3.fontWeight,
+      margin: theme.spacing.sm,
+      marginLeft: theme.spacing.sm,
     },
     lyricsDescription: {
-      marginBottom: 20,
+      marginBottom: theme.spacing.lg,
     },
     songTitle: {
       alignItems: 'center',
@@ -68,7 +67,7 @@ export const createStyles = (theme: Theme, insets: any) => {
     songContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginBottom: 10,
+      marginBottom: theme.spacing.md,
       height: height * 0.1,
     },
     songButton: {
@@ -80,28 +79,27 @@ export const createStyles = (theme: Theme, insets: any) => {
       flex: 1,
     },
     title: {
-      color: 'white',
-      fontSize: 20,
-      fontWeight: 'bold',
+      color: theme.colors.text,
+      fontSize: theme.typography.h2.fontSize,
+      fontWeight: theme.typography.h2.fontWeight,
     },
     description: {
-      color: 'lightgray',
-      fontSize: 14,
-      marginTop: 5,
+      color: theme.colors.textSecondary,
+      fontSize: theme.typography.body.fontSize,
+      marginTop: theme.spacing.xs,
     },
     albumContainer: {
       justifyContent: 'center',
       alignItems: 'center',
     },
     songBox: {
-      borderRadius: 20,
+      borderRadius: theme.borderRadius.xl,
       height: height * 0.43,
       width: width * 0.85,
-      resizeMode: 'contain',
     },
     imageSong: {
-      borderRadius: 20,
-      marginBottom: 20,
+      borderRadius: theme.borderRadius.xl,
+      marginBottom: theme.spacing.md,
       height: '100%',
       width: '100%',
     },
@@ -111,16 +109,18 @@ export const createStyles = (theme: Theme, insets: any) => {
       resizeMode: 'contain',
     },
     button: {
-      borderRadius: 5,
+      borderRadius: theme.borderRadius.sm,
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: theme.colors.divider,
+      padding: theme.spacing.md,
     },
     plusImage: {
       width: 30,
       height: 30,
     },
     sliderContainer: {
-      marginTop: 10,
+      marginTop: theme.spacing.md,
       width: width * 0.85,
     },
     timeContainer: {
@@ -128,8 +128,14 @@ export const createStyles = (theme: Theme, insets: any) => {
       justifyContent: 'space-between',
     },
     timeText: {
-      color: 'white',
-      fontSize: 14,
+      color: theme.colors.text,
+      fontSize: theme.typography.caption.fontSize,
+    },
+    settingsWrapper: {
+      marginLeft: theme.spacing.md,
+    },
+    settingsIcon: {
+      color: theme.colors.text,
     },
   });
 };

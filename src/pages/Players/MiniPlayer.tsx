@@ -1,18 +1,29 @@
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import React, { useState } from 'react';
-import { View, Text, Pressable, Image, Modal, StyleSheet, Platform } from 'react-native';
+import { View, Text, Pressable, Image, Modal } from 'react-native'; // Slider'ı import ettik
 
-import Song from '../Song/SongScreenMiniPlayer';
 import SongMiniPlayer from '../Song/SongScreenMiniPlayer';
 import { useStyles } from './MiniPlayerStyle';
+import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
+import Slider from '@react-native-community/slider';
 
-export default function MiniPlayer({ song, isPlaying, onPlayPause }) {
+export default function MiniPlayer({ song, isVisible, setIsVisible }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const styles = useStyles();
+
+  // Global music player state
+  const { isPlaying, setIsPlaying } = useMusicPlayer();
+
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
   };
+
+  const closeMiniPlayer = () => {
+    setIsVisible(false);
+  };
+
+  if (!isVisible) return null;
 
   return (
     <>
@@ -27,8 +38,11 @@ export default function MiniPlayer({ song, isPlaying, onPlayPause }) {
               {song.description}
             </Text>
           </View>
-          <Pressable onPress={onPlayPause} style={styles.controlButton}>
+          <Pressable onPress={() => setIsPlaying(!isPlaying)} style={styles.controlButton}>
             <Ionicons name={isPlaying ? 'pause' : 'play'} size={24} color="white" />
+          </Pressable>
+          <Pressable onPress={closeMiniPlayer} style={styles.closeButton}>
+            <Ionicons name="close" size={24} color="white" />
           </Pressable>
         </BlurView>
       </Pressable>

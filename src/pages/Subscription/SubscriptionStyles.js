@@ -6,7 +6,7 @@ export default (theme) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.black,
+      backgroundColor: theme.colors.primary,
       paddingBottom: 30,
     },
     scrollContainer: {},

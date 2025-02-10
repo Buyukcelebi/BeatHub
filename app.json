@@ -9,9 +9,8 @@
     "experiments": {
       "tsconfigPaths": true
     },
-    "plugins": [
-      "expo-localization"
-    ],
+
+    "plugins": ["expo-localization"],
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -20,14 +19,15 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.hyperlion.beathub"
+      "bundleIdentifier": "com.hyperlion.beathub",
+      "newArchEnabled": true
     },
     "android": {
+      "newArchEnabled": true,
+
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"

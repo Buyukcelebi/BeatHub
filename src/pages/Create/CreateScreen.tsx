@@ -23,6 +23,8 @@ function Create() {
           song={currentSong}
           isPlaying={isPlaying}
           onPlayPause={() => setIsPlaying(!isPlaying)}
+          isVisible={isPlayerVisible}
+          setIsVisible={setIsPlayerVisible} // MiniPlayer'a görünürlük kontrolünü gönderiyoruz
         />
       )}
     </View>
