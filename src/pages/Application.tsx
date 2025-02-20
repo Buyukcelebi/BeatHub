@@ -1,4 +1,4 @@
-import { Octicons as Icon } from '@expo/vector-icons';
+import { Feather as Icon } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   createStaticNavigation,
@@ -33,6 +33,8 @@ import SettingsScreen from './Settings/SettingsScreen';
 import * as Animatable from 'react-native-animatable';
 
 import SubscriptionScreen from './Subscription/SubscriptionScreen';
+import CoverScreen from './Cover/CoverScreen';
+import PickMusicModal from './PickMusic/PickMusicModal';
 export const navigationRef = createNavigationContainerRef();
 
 const useIsInitialized = () => {
@@ -76,6 +78,9 @@ function TabNavigator() {
             case 'Create':
               iconName = 'plus-circle';
               break;
+            case 'Cover':
+              iconName = 'mic';
+              break;
           }
 
           const iconColor = focused ? theme.colors.primary : color;
@@ -112,7 +117,7 @@ function TabNavigator() {
             <TouchableOpacity
               style={styles.settingsWrapper}
               onPress={() => navigation?.navigate('SettingsScreen')}>
-              <Icon name="gear" size={18} style={styles.settingsIcon} />
+              <Icon name="settings" size={18} style={styles.settingsIcon} />
             </TouchableOpacity>
           </View>
         ),
@@ -127,6 +132,12 @@ function TabNavigator() {
       },
       Create: {
         screen: CreateScreen,
+        options: {
+          headerShown: true,
+        },
+      },
+      Cover: {
+        screen: CoverScreen,
         options: {
           headerShown: true,
         },
@@ -173,6 +184,8 @@ const RootStack = createNativeStackNavigator({
         presentation: 'modal',
       },
       screens: {
+        PickMusicModal,
+
         DeveloperScreen,
       },
     },

@@ -25,36 +25,11 @@ export default function Button({
   const { t } = useTranslation();
 
   return (
-    <TouchableOpacity disabled={disabled} onPress={onPress}>
-      <LinearGradient
-        colors={
-          !disabled
-            ? backgroundColor || ['#FEB47B', '#86A8E7', '#91EAE4', '#00E676']
-            : ['#171717', '#171717']
-        }
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 2 }}
-        style={[
-          variant === 'primary' ? style.main : style.secondary,
-          disabled && style.disabled,
-          style.buttonWrapper,
-          shadowColor && { shadowColor },
-        ]}>
-        {icon && <View style={style.iconWrapper}>{icon}</View>}
-        {!isLoading && (
-          <Text
-            style={[
-              variant === 'primary' ? style.textMain : style.textSecondary,
-              style.text,
-              fontSize && { fontSize },
-              fontWeight && { fontWeight },
-            ]}>
-            {t(text)}
-          </Text>
-        )}
-        {isLoading && <ActivityIndicator style={style.loading} />}
-        {rightIcon && !isLoading && <View style={style.rightIconWrapper}>{rightIcon}</View>}
-      </LinearGradient>
+    <TouchableOpacity style={style.main} onPress={onPress}>
+      {icon && <View style={style.iconWrapper}>{icon}</View>}
+      {!isLoading && <Text style={style.text}>{t(text)}</Text>}
+      {isLoading && <ActivityIndicator style={style.loading} />}
+      {rightIcon && !isLoading && <View style={style.rightIconWrapper}>{rightIcon}</View>}
     </TouchableOpacity>
   );
 }

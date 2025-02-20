@@ -94,8 +94,8 @@ export const createStyles = (theme: Theme, insets: any) => {
     },
     songBox: {
       borderRadius: theme.borderRadius.xl,
-      height: height * 0.43,
-      width: width * 0.85,
+      height: height * 0.43, // Yükseklik ekran boyutuna göre
+      width: width * 0.85, // Genişlik ekran boyutuna göre
     },
     imageSong: {
       borderRadius: theme.borderRadius.xl,

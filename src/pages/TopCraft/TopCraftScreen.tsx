@@ -32,7 +32,7 @@ const nowData: Item[] = [
     title: 'Song 1',
     description: 'Jazz 1',
     count: '2803099',
-    time: '30',
+    time: 30,
     imageUrl: require('@/assets/images/Jazz.png'),
   },
   {

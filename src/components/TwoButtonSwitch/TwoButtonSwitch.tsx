@@ -27,7 +27,7 @@ const TwoButtonSwitch = () => {
   };
 
   return (
-    <ScrollView style={styles.top}>
+    <View style={styles.top}>
       <View style={styles.container}>
         <View style={styles.switchContainer}>
           <Animated.View
@@ -44,7 +44,7 @@ const TwoButtonSwitch = () => {
         </View>
         {isLeftButtonActive ? <Lyrics /> : <Prompt />}
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

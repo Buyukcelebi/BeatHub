@@ -18,18 +18,22 @@ const createButtonStyles = (theme) => {
       marginTop: -2,
     },
     main: {
-      backgroundColor: colors.primaryButton,
+      borderRadius: 15,
+      alignItems: 'center',
+      backgroundColor: theme.colors.primary,
+      justifyContent: 'center',
+      padding: 4,
     },
     secondary: {
-      backgroundColor: colors.secondaryButton,
+      backgroundColor: '#fff',
     },
     text: {
-      fontSize: 18,
-      fontWeight: 'normal',
+      fontSize: 16,
       padding: 10,
       justifyContent: 'center',
       alignItems: 'center',
       textAlign: 'center',
+      color: 'white',
     },
     loading: {
       backgroundColor: 'transparent',

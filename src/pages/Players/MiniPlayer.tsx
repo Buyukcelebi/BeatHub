@@ -1,26 +1,21 @@
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import React, { useState } from 'react';
-import { View, Text, Pressable, Image, Modal } from 'react-native'; // Slider'ı import ettik
-
-import SongMiniPlayer from '../Song/SongScreenMiniPlayer';
+import { View, Text, Pressable, Image, Modal } from 'react-native';
 import { useStyles } from './MiniPlayerStyle';
 import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
-import Slider from '@react-native-community/slider';
 
 export default function MiniPlayer({ song, isVisible, setIsVisible }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const styles = useStyles();
-
-  // Global music player state
-  const { isPlaying, setIsPlaying } = useMusicPlayer();
+  const { isPlaying, togglePlayPause, closePlayer } = useMusicPlayer(); // togglePlayPause fonksiyonunu al
 
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
   };
 
   const closeMiniPlayer = () => {
-    setIsVisible(false);
+    closePlayer();
   };
 
   if (!isVisible) return null;
@@ -38,10 +33,10 @@ export default function MiniPlayer({ song, isVisible, setIsVisible }) {
               {song.description}
             </Text>
           </View>
-          <Pressable onPress={() => setIsPlaying(!isPlaying)} style={styles.controlButton}>
+          <Pressable onPress={togglePlayPause} style={styles.controlButton}>
             <Ionicons name={isPlaying ? 'pause' : 'play'} size={24} color="white" />
           </Pressable>
-          <Pressable onPress={closeMiniPlayer} style={styles.closeButton}>
+          <Pressable onPress={closeMiniPlayer}>
             <Ionicons name="close" size={24} color="white" />
           </Pressable>
         </BlurView>
@@ -53,7 +48,7 @@ export default function MiniPlayer({ song, isVisible, setIsVisible }) {
           transparent={false}
           visible={isFullScreen}
           onRequestClose={toggleFullScreen}>
-          <SongMiniPlayer song={song} backButtonPress={toggleFullScreen} />
+          {/* Full screen player */}
         </Modal>
       )}
     </>

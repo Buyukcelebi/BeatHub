@@ -93,6 +93,62 @@ export const createStyles = (theme: Theme, insets: any) => {
       ...theme.typography.body,
       height: 150,
     },
+    inputNamePrompt: {
+      paddingTop: theme.spacing.md,
+      paddingHorizontal: theme.spacing.md,
+      color: theme.colors.text,
+      ...theme.typography.body,
+      height: 80,
+    },
+    modalTitle: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      marginVertical: 10,
+      color: theme.colors.background,
+    },
+    modalText: {
+      fontSize: 16,
+      textAlign: 'center',
+      color: theme.colors.text,
+      marginBottom: 10,
+    },
+    modalOverlay: {
+      flex: 1,
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    modalContent: {
+      backgroundColor: theme.colors.primary,
+      padding: 20,
+      borderRadius: 20,
+      alignItems: 'center',
+      width: '80%',
+      borderWidth: 1,
+      borderColor: theme.colors.background,
+    },
+    modalIconContainer: {
+      marginBottom: 15,
+    },
+    goToLibraryButton: {
+      backgroundColor: theme.colors.gray,
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      borderRadius: 16,
+      marginTop: 15,
+    },
+    goToLibraryText: {
+      color: theme.colors.white,
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+    fixedButtonContainer: {
+      position: 'absolute',
+      bottom: 20,
+      left: 20,
+      right: 20,
+      zIndex: 1000,
+    },
   });
 };
 

@@ -13,8 +13,6 @@ import {
 
 import { useStyles } from './CategoriesStyles';
 
-import SongScreen from '../Song1/SongScreen';
-
 import BackButton from '@/components/Buttons/BackButton';
 
 import MiniPlayer from '../Players/MiniPlayer';
@@ -28,60 +26,17 @@ type CategoryItem = {
   title: string;
   description: string;
   count: string;
-  time?: string;
+  time: string;
   imageUrl: ImageSourcePropType;
 };
 
-const jazzData: CategoryItem[] = [
+const jazzData = [
   {
     id: '1',
-    title: 'Song 1',
-    description: 'Jazz 5',
-    count: '2803099',
-    time: '30',
-    imageUrl: require('@/assets/images/Jazz.png'),
-  },
-  {
-    id: '2',
-    title: 'Song 2',
-    description: 'Jazz 2',
-    count: '2803099',
-    time: '30',
-    imageUrl: require('@/assets/images/album.png'),
-  },
-  {
-    id: '3',
-    title: 'Song 3',
-    description: 'Jazz 3',
-    count: '2803099',
-    time: '30',
-    imageUrl: require('@/assets/images/album.png'),
-  },
-  {
-    id: '4',
-    title: 'Song 4',
-    description: 'Jazz 4',
-    count: '2803099',
-    time: '30',
-    imageUrl: require('@/assets/images/album.png'),
-  },
-  {
-    id: '5',
-    title: 'Song 5',
-    description: 'Jazz 5',
-    count: '2803099',
-    time: '30',
-    imageUrl: require('@/assets/images/album.png'),
-  },
-];
-
-const popData = [
-  {
-    id: '1',
-    title: 'Latest Song 1',
+    title: 'Latest Song 3',
     description: 'Rock 1',
     count: '2803099',
-    time: '30',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -89,14 +44,15 @@ const popData = [
     title: 'Latest Song 2',
     description: 'Rock 2',
     count: '2803099',
-    time: '30',
-    imageUrl: require('@/assets/images/Jazz.png'),
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
   },
   {
     id: '3',
     title: 'Latest Song 3',
     description: 'Rock 3',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -104,6 +60,7 @@ const popData = [
     title: 'Latest Song 4',
     description: 'Rock 4',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -111,13 +68,114 @@ const popData = [
     title: 'Latest Song 5',
     description: 'Rock 5',
     count: '2803099',
-    imageUrl: require('@/assets/images/album.png'),
+    time: 200,
+    imageUrl: require('@/assets/images/Jazz.png'),
   },
   {
     id: '6',
     title: 'Latest Song 6',
     description: 'Rock 6',
     count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
+  },
+];
+
+const popData = [
+  {
+    id: '1',
+    title: 'Latest Song 3',
+    description: 'Rock 1',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
+  },
+  {
+    id: '2',
+    title: 'Latest Song 2',
+    description: 'Rock 2',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
+  },
+  {
+    id: '3',
+    title: 'Latest Song 3',
+    description: 'Rock 3',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
+  },
+  {
+    id: '4',
+    title: 'Latest Song 4',
+    description: 'Rock 4',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
+  },
+  {
+    id: '5',
+    title: 'Latest Song 5',
+    description: 'Rock 5',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/Jazz.png'),
+  },
+  {
+    id: '6',
+    title: 'Latest Song 6',
+    description: 'Rock 6',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
+  },
+  {
+    id: '1',
+    title: 'Latest Song 3',
+    description: 'Rock 1',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
+  },
+  {
+    id: '2',
+    title: 'Latest Song 2',
+    description: 'Rock 2',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
+  },
+  {
+    id: '3',
+    title: 'Latest Song 3',
+    description: 'Rock 3',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
+  },
+  {
+    id: '4',
+    title: 'Latest Song 4',
+    description: 'Rock 4',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
+  },
+  {
+    id: '5',
+    title: 'Latest Song 5',
+    description: 'Rock 5',
+    count: '2803099',
+    time: 200,
+    imageUrl: require('@/assets/images/Jazz.png'),
+  },
+  {
+    id: '6',
+    title: 'Latest Song 6',
+    description: 'Rock 6',
+    count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
 ];
@@ -128,6 +186,7 @@ const rockData = [
     title: 'Latest Song 3',
     description: 'Rock 1',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -135,6 +194,7 @@ const rockData = [
     title: 'Latest Song 2',
     description: 'Rock 2',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -142,13 +202,15 @@ const rockData = [
     title: 'Latest Song 3',
     description: 'Rock 3',
     count: '2803099',
-    imageUrl: require('@/assets/images/Jazz.png'),
+    time: 200,
+    imageUrl: require('@/assets/images/album.png'),
   },
   {
     id: '4',
     title: 'Latest Song 4',
     description: 'Rock 4',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
   {
@@ -156,13 +218,15 @@ const rockData = [
     title: 'Latest Song 5',
     description: 'Rock 5',
     count: '2803099',
-    imageUrl: require('@/assets/images/album.png'),
+    time: 200,
+    imageUrl: require('@/assets/images/Jazz.png'),
   },
   {
     id: '6',
     title: 'Latest Song 6',
     description: 'Rock 6',
     count: '2803099',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
 ];
@@ -172,7 +236,7 @@ const rapData = [
     title: 'Latest Song 3',
     description: 'Rock 1',
     count: '2803099',
-    time: '200',
+    time: 200,
     imageUrl: require('@/assets/images/album.png'),
   },
   {

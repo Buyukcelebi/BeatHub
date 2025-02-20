@@ -63,6 +63,68 @@ export const createStyles = (theme: Theme) => {
       textAlign: 'center',
       paddingBottom: theme.spacing.sm,
     },
+    musicItem: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingLeft: 20,
+      paddingBottom: 15,
+      borderRadius: 20,
+      paddingRight: 20,
+    },
+    listItemImage: {
+      width: 100,
+      height: 100,
+      borderRadius: 20,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    musicTitle: {
+      fontSize: 18,
+      color: 'white',
+      fontWeight: 'bold',
+    },
+    timeContainer: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      alignItems: 'center',
+      backgroundColor: theme.colors.overlay,
+    },
+    time: {
+      color: theme.colors.white,
+      fontSize: theme.typography.caption.fontSize,
+    },
+    playIcon: {
+      width: 10,
+      height: 10,
+      marginRight: 5,
+    },
+    playCountContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    listItemText: {
+      color: theme.colors.text,
+      ...theme.typography.body,
+    },
+    descriptionText: {
+      color: theme.colors.textSecondary,
+      ...theme.typography.caption,
+    },
+    repeatText: {
+      color: theme.colors.textSecondary,
+      ...theme.typography.caption,
+      justifyContent: 'flex-end',
+    },
+    textContainer: {
+      marginLeft: theme.spacing.sm,
+      flex: 1,
+    },
+    icon: {
+      width: 20,
+      height: 20,
+    },
   });
 };
 type LibraryStyles = ReturnType<typeof createStyles>;

@@ -9,8 +9,7 @@ export default (theme) =>
       backgroundColor: theme.colors.primary,
       paddingBottom: 30,
     },
-    scrollContainer: {},
-    scrollContent: {},
+
     closeButton: {
       position: 'absolute',
       top: Platform.OS === 'ios' ? 60 : 40,
