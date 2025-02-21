@@ -108,24 +108,17 @@ export const createStyles = (theme: Theme, insets: any) => {
     imageContainer: {
       position: 'relative',
       aspectRatio: 1,
-      borderRadius: 10,
+      borderRadius: 15,
       overflow: 'hidden',
       borderWidth: 2,
       borderColor: 'transparent',
     },
     selectedVoiceContainer: {
-      borderRadius: 12,
+      borderRadius: 15,
       borderColor: theme.colors.primary,
       borderWidth: 3,
     },
-    selectedOverlay: {
-      position: 'absolute',
-      top: 8,
-      right: 8,
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      borderRadius: 12,
-      padding: 2,
-    },
+
     voiceImage: {
       width: '100%',
       height: '100%',
@@ -144,6 +137,8 @@ export const createStyles = (theme: Theme, insets: any) => {
       color: theme.colors.white,
       fontSize: 12,
       fontWeight: '500',
+      paddingLeft: 10,
+      paddingBottom: 10,
     },
     songSection: {
       paddingHorizontal: 20,

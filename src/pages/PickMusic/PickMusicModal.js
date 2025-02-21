@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
-  Modal,
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  FlatList,
+  ScrollView,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -100,7 +100,6 @@ const PickMusicModal = ({ visible }) => {
   const handleSongSelect = (song) => {
     const route = navigation.getState().routes[navigation.getState().index];
     const onSelect = route.params?.onSelect;
-    console.log('song', song);
     if (onSelect) {
       onSelect({
         url: song.url,
@@ -150,8 +149,9 @@ const PickMusicModal = ({ visible }) => {
     }
   };
 
-  const renderSongItem = ({ item }) => (
+  const renderSongItem = (item) => (
     <TouchableOpacity
+      key={item.id}
       style={styles.songItem}
       activeOpacity={0.7}
       onPress={() => handleSongSelect(item)}>
@@ -197,83 +197,97 @@ const PickMusicModal = ({ visible }) => {
   };
 
   return (
-    <Modal visible={visible} animationType="slide" onRequestClose={handleClose}>
-      <View style={styles.modalContainer}>
-        <View style={styles.modalContent}>
-          <View style={styles.header}>
-            <TouchableOpacity onPress={handleClose} style={styles.closeButton}>
-              <Icon name="close" size={24} color={theme.colors.white} />
-            </TouchableOpacity>
-            <Text style={styles.title}>{t('Pick a Song')}</Text>
-            <View style={styles.placeholder} />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Icon
-              name="search"
-              size={20}
-              color={theme.colors.placeholder}
-              style={styles.searchIcon}
-            />
-            <TextInput
-              ref={inputRef}
-              style={styles.input}
-              placeholder={t('Search on Spotify')}
-              placeholderTextColor={theme.colors.placeholder}
-              onFocus={handleInputFocus}
-              onBlur={handleInputBlur}
-              value={searchQuery}
-              onChangeText={setSearchQuery}
-              editable={!loading}
-              returnKeyType="search"
-              onSubmitEditing={handleSearch}
-              keyboardAppearance="dark"
-            />
-            {searchQuery.length > 0 ? (
-              <TouchableOpacity
-                onPress={handleClearSearch}
-                style={styles.pasteButton}
-                disabled={loading}
-                activeOpacity={0.7}>
-                <Icon name="close-circle" size={20} color={theme.colors.white} />
-              </TouchableOpacity>
-            ) : null}
-          </View>
-
-          {error && <Text style={styles.errorText}>{error}</Text>}
-
-          {!searchQuery && !isInputFocused && songs.length > 0 && (
-            <Text style={styles.sectionTitle}>{t('Popular on Spotify')}</Text>
-          )}
-
-          <FlatList
-            data={!isInputFocused ? songs : []}
-            renderItem={renderSongItem}
-            keyExtractor={(item) => item.id}
-            contentContainerStyle={styles.listContainer}
-            refreshing={loading}
-            onRefresh={handleSearch}
-            ListEmptyComponent={() => (
-              <Text style={styles.emptyText}>
-                {loading ? t('Searching...') : songs?.length === 0 ? t('No results found') : null}
-              </Text>
-            )}
-          />
+    <View style={styles.modalContainer}>
+      <View style={styles.modalContent}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={handleClose} style={styles.closeButton}>
+            <Icon name="close" size={24} color={theme.colors.white} />
+          </TouchableOpacity>
+          <Text style={styles.title}>{t('Pick a Song')}</Text>
+          <View style={styles.placeholder} />
         </View>
+
+        <View style={styles.inputContainer}>
+          <Icon
+            name="search"
+            size={20}
+            color={theme.colors.placeholder}
+            style={styles.searchIcon}
+          />
+          <TextInput
+            ref={inputRef}
+            style={styles.input}
+            placeholder={t('Search on Spotify')}
+            placeholderTextColor={theme.colors.placeholder}
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+            editable={!loading}
+            returnKeyType="search"
+            onSubmitEditing={handleSearch}
+            keyboardAppearance="dark"
+          />
+          {searchQuery.length > 0 ? (
+            <TouchableOpacity
+              onPress={handleClearSearch}
+              style={styles.pasteButton}
+              disabled={loading}
+              activeOpacity={0.7}>
+              <Icon name="close-circle" size={20} color={theme.colors.white} />
+            </TouchableOpacity>
+          ) : null}
+        </View>
+
+        {error && <Text style={styles.errorText}>{error}</Text>}
+
+        {!searchQuery && !isInputFocused && songs.length > 0 && (
+          <Text style={styles.sectionTitle}>{t('Popular on Spotify')}</Text>
+        )}
+
+        <ScrollView
+          nestedScrollEnabled
+          contentContainerStyle={[
+            styles.listContainer,
+            {
+              flexGrow: 1,
+              justifyContent: loading || songs.length === 0 ? 'center' : 'flex-start',
+            },
+          ]}
+          onScrollBeginDrag={() => {
+            if (inputRef.current) {
+              inputRef.current.blur();
+            }
+          }}>
+          {loading ? (
+            <Text style={styles.emptyText}>{t('Searching...')}</Text>
+          ) : songs.length === 0 ? (
+            <Text style={styles.emptyText}>{t('No results found')}</Text>
+          ) : (
+            !isInputFocused && songs.map((item) => renderSongItem(item))
+          )}
+        </ScrollView>
+
+        {loading && (
+          <View style={styles.loadingOverlay}>
+            <ActivityIndicator size="large" color={theme.colors.primary} />
+          </View>
+        )}
       </View>
-    </Modal>
+    </View>
   );
 };
+
 const createStyles = (theme) =>
   StyleSheet.create({
     modalContainer: {
       flex: 1,
-      backgroundColor: theme.colors.modalBackground,
+      backgroundColor: theme.colors.background,
     },
     modalContent: {
       flex: 1,
       backgroundColor: theme.colors.background,
-      marginTop: 50,
+      marginTop: 20,
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
     },
@@ -356,7 +370,7 @@ const createStyles = (theme) =>
     songTitle: {
       fontSize: 15,
       fontWeight: '600',
-      color: theme.colors.white,
+      color: theme.colors.text,
       marginBottom: 4,
       lineHeight: 20,
     },
@@ -366,7 +380,7 @@ const createStyles = (theme) =>
     },
     duration: {
       fontSize: 13,
-      color: theme.colors.inputBackground,
+      color: theme.colors.textSecondary,
       opacity: 0.8,
     },
     viewCount: {
@@ -426,6 +440,16 @@ const createStyles = (theme) =>
       marginHorizontal: 20,
       marginTop: 20,
       marginBottom: 5,
+    },
+    loadingOverlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0,0,0,0.3)',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
   });
 

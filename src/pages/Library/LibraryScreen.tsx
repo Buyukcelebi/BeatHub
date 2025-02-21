@@ -20,10 +20,11 @@ function Library({ texta }) {
     useMusicPlayer();
   const [isPlaying, setIsPlaying] = useState(false);
   const [musicList, setMusicList] = useState([]);
+  const [coverList, setCoverList] = useState([]);
 
   useFocusEffect(
     React.useCallback(() => {
-      loadMusic();
+      loadCover();
     }, [])
   );
 
@@ -47,9 +48,29 @@ function Library({ texta }) {
     }
   };
 
+  const loadCover = async () => {
+    try {
+      const existingData = await AsyncStorage.getItem(STORAGE_KEYS.COVERS);
+      if (existingData) {
+        const musicIds = JSON.parse(existingData);
+        if (musicIds.length > 0) {
+          setCoverList(musicIds);
+
+          const musicPromises = musicIds.map((id) => checkMusicStatus(id));
+          Promise.all(musicPromises).then((musicStatuses) => {
+            console.log('Music statuses:', musicStatuses);
+          });
+        }
+        setCoverList(JSON.parse(existingData));
+      }
+    } catch (error) {
+      console.error('Error loading music:', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      {musicList.length === 0 ? (
+      {coverList.length === 0 ? (
         <View style={styles.top}>
           <View style={styles.topContainer}>
             <Image source={require('@/assets/images/musictable.png')} style={styles.topImage} />
@@ -69,7 +90,7 @@ function Library({ texta }) {
         </View>
       ) : (
         <FlatList
-          data={musicList}
+          data={coverList}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity

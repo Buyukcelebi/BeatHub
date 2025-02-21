@@ -5,11 +5,11 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, View, ScrollView, TouchableOpacity, Linking, Dimensions } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import LinearGradient from 'react-native-linear-gradient';
 import Spinner from 'react-native-loading-spinner-overlay';
-
+import LinearGradient from 'react-native-linear-gradient';
+import { InAppPurchaseContainer } from '../../containers/inAppPurchaseContainer';
 import styles from './SubscriptionStyles';
-import Button from '../../components/Buttons/Button';
+import Button from '../../components/Buttons/SubsButton';
 import SubscriptionButton from '../../components/Buttons/SubscriptionButton';
 import useThemedStyles from '../../theme/useThemedStyles';
 
@@ -28,13 +28,15 @@ export default function SubscriptionScreen({
 }) {
   const style = useThemedStyles(styles);
   const navigation = useNavigation();
-  const [selectedOffer, setSelectedOffer] = useState();
+  const [selectedOffer, setSelectedOffer] = useState(products?.[0]);
   const { t, i18n } = useTranslation();
   const params = route?.params;
   const navigateTo = params?.navigateTo;
 
   useEffect(() => {
-    setSelectedOffer();
+    if (products && products.length > 0) {
+      setSelectedOffer(products[0]);
+    }
   }, [products]);
 
   const benefitList = [
@@ -159,7 +161,6 @@ export default function SubscriptionScreen({
                   onPress={() => setSelectedOffer(item)}
                 />
               ))}
-
               <View style={{ marginTop: 5 }}>
                 <Text style={style.footerText}>
                   <Icon name="shield" style={style.footerIcon} />{' '}

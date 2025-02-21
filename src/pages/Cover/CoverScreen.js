@@ -311,7 +311,7 @@ const CoverScreen = ({ isPlusUser }) => {
 
   const handleGoToLibrary = () => {
     setShowSuccessModal(false);
-    navigation.navigate('MyLibraryScreen');
+    navigation.navigate('Library');
   };
 
   return (

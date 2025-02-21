@@ -12,9 +12,7 @@ export default function Providers({ children }: { children: ReactNode }) {
     <InitializationProvider>
       <LanguageProvider>
         <I18nextProvider i18n={i18n}>
-          <SubscriptionProvider>
-            <ThemeProvider>{children}</ThemeProvider>
-          </SubscriptionProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </I18nextProvider>
       </LanguageProvider>
     </InitializationProvider>

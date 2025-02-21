@@ -35,6 +35,7 @@ import * as Animatable from 'react-native-animatable';
 import SubscriptionScreen from './Subscription/SubscriptionScreen';
 import CoverScreen from './Cover/CoverScreen';
 import PickMusicModal from './PickMusic/PickMusicModal';
+import SubscriptionButton from '@/components/Buttons/SubscriptionButton';
 export const navigationRef = createNavigationContainerRef();
 
 const useIsInitialized = () => {
@@ -171,11 +172,11 @@ const RootStack = createNativeStackNavigator({
       screens: {
         HomeScreen: HomeTabs as typeof HomeTabs,
         SettingsScreen,
-        SubscriptionScreen,
         SongScreen,
         SongScreenMiniPlayer,
         CategoriesScreen,
         TopCraftScreen,
+        SubscriptionScreen,
       },
     },
     Modal: {

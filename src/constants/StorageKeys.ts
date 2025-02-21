@@ -1,8 +1,10 @@
 export default {
-  INIT: '@Beathub:init',
-  ONBOARDING: '@Beathub:complete_onboarding',
-  PROFILE: '@Beathub:complete_profile',
-  INIT_SHOW_OFFER: '@Beathub:show_offer',
-  LIMIT: '@Beathub:limit_left',
-  USER_ID: '@Beathub:user_id',
+  INIT: '@MusicAI:init',
+  ONBOARDING: '@MusicAI:complete_onboarding',
+  PROFILE: '@MusicAI:CompleteProfile',
+  INIT_SHOW_OFFER: '@MusicAI:ShowOffer',
+  LIMIT: '@MusicAI:LimitLeft',
+  USER_ID: '@MusicAI:user_id',
+  COVERS: '@MusicAI:covers1111',
+  MUSICS: '@MusicAI:musics1',
 };
