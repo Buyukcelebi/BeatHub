@@ -19,11 +19,7 @@ export default function WelcomeOnboardingScreen() {
   };
 
   return (
-    <Animatable.View
-      animation="fadeIn"
-      delay={200}
-      duration={isAndroid ? 500 : 3000}
-      style={styles.pageContainer}>
+    <Animatable.View delay={200} duration={isAndroid ? 500 : 3000} style={styles.pageContainer}>
       <StatusBar hidden />
       <View style={{ flex: 1, position: 'relative' }}>
         <Text style={styles.entryTitle}>{t('Welcome to AI Song')}</Text>

@@ -18,7 +18,7 @@ export default function CoverOnboardingScreen() {
   const isAndroid = Platform.OS === 'android';
 
   const onButtonPress = () => {
-    setIsInitialized(true);
+    setIsInitialized(null);
   };
 
   useEffect(() => {
@@ -29,11 +29,7 @@ export default function CoverOnboardingScreen() {
   }, [isInitialized]);
 
   return (
-    <Animatable.View
-      animation="fadeIn"
-      delay={200}
-      duration={isAndroid ? 500 : 3000}
-      style={styles.pageContainer}>
+    <Animatable.View duration={isAndroid ? 500 : 3000} style={styles.pageContainer}>
       <StatusBar hidden />
 
       <View style={styles.lottieWrapper}>
@@ -46,11 +42,7 @@ export default function CoverOnboardingScreen() {
         {t('Upload your voice and let our AI sing a song for you')}
       </Text>
 
-      <Animatable.View
-        animation="fadeIn"
-        delay={200}
-        duration={isAndroid ? 500 : 3000}
-        style={styles.buttonWrapper}>
+      <Animatable.View duration={isAndroid ? 500 : 3000} style={styles.buttonWrapper}>
         <PrimaryButton buttonText={t('UPLOAD VOICE')} onPress={onButtonPress} />
       </Animatable.View>
     </Animatable.View>

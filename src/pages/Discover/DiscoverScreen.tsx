@@ -222,7 +222,7 @@ function Discover() {
         headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
         headerImage={
           <View style={styles.top}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Create')}>
               <View style={styles.buttonImage}>
                 <Ionicons name="add" size={30} color={styles.plusIcon.color} />
               </View>

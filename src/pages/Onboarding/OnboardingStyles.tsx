@@ -15,19 +15,19 @@ export const createStyles = (theme: Theme, insets: any) => {
       ...theme.typography.h1,
       color: theme.colors.text,
       textAlign: 'center',
-      marginTop: 50,
+      marginTop: 70,
     },
     subTitle: {
       ...theme.typography.body,
       color: theme.colors.textSecondary,
       textAlign: 'center',
-      marginVertical: theme.spacing.xs,
+      marginVertical: theme.spacing.md,
       marginHorizontal: theme.spacing.md,
     },
     entryDescription: {
       color: theme.colors.textSecondary,
       textAlign: 'center',
-      marginTop: theme.spacing.md,
+      marginTop: theme.spacing.xs,
       marginHorizontal: theme.spacing.md,
     },
     promptText: {
@@ -38,6 +38,7 @@ export const createStyles = (theme: Theme, insets: any) => {
     songCarouselWrapper: {
       marginVertical: theme.spacing.sm,
       flex: 1,
+      marginTop: theme.spacing.xl,
     },
     buttonFooter: {
       fontSize: 11,

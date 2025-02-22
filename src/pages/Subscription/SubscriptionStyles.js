@@ -276,7 +276,7 @@ export default (theme) =>
     },
     headerSection: {
       alignItems: 'center',
-      marginTop: 60,
+      marginTop: 100,
       marginBottom: 30,
     },
     headerTitle: {
@@ -286,15 +286,14 @@ export default (theme) =>
       marginBottom: 15,
     },
     headerBadge: {
-      paddingHorizontal: 16,
-      paddingVertical: 8,
-      borderRadius: 20,
-      marginTop: 8,
+      borderRadius: 25,
+      marginTop: 15,
     },
     headerBadgeText: {
       color: '#FFFFFF',
       fontSize: 16,
       fontWeight: '600',
+      margin: 15,
     },
     benefitsSection: {
       paddingHorizontal: 20,

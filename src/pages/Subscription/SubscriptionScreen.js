@@ -7,7 +7,6 @@ import { Text, View, ScrollView, TouchableOpacity, Linking, Dimensions } from 'r
 import * as Animatable from 'react-native-animatable';
 import Spinner from 'react-native-loading-spinner-overlay';
 import LinearGradient from 'react-native-linear-gradient';
-import { InAppPurchaseContainer } from '../../containers/inAppPurchaseContainer';
 import styles from './SubscriptionStyles';
 import Button from '../../components/Buttons/SubsButton';
 import SubscriptionButton from '../../components/Buttons/SubscriptionButton';

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { View, Text, Pressable, Image, Modal } from 'react-native';
 import { useStyles } from './MiniPlayerStyle';
 import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
+import SongMiniPlayer from '../Song/SongScreenMiniPlayer';
 
 export default function MiniPlayer({ song, isVisible, setIsVisible }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -49,6 +50,7 @@ export default function MiniPlayer({ song, isVisible, setIsVisible }) {
           visible={isFullScreen}
           onRequestClose={toggleFullScreen}>
           {/* Full screen player */}
+          <SongMiniPlayer backButtonPress={toggleFullScreen} song={song} />
         </Modal>
       )}
     </>

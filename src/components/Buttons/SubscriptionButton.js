@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableHighlight, TouchableOpacity, ActivityIndicator } from 'react-native';
-import styles from './ButtonStyles';
+import styles from './Button1Styles';
 import useThemedStyles from '../../theme/useThemedStyles';
 import { useTranslation } from 'react-i18next';
 
