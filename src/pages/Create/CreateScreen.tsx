@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
 import MiniMusicPlayer from '../Players/MiniPlayer';
 
-import TwoButtonSwitch from '@/components/TwoButtonSwitch/TwoButtonSwitch';
+import TwoButtonSwitch from '@/components/TwoButtonSwitchCreate/TwoButtonSwitch';
 
 function Create() {
   const handleClosePlayer = (song: any) => {
@@ -17,16 +17,6 @@ function Create() {
   return (
     <View style={styles.container}>
       <TwoButtonSwitch />
-
-      {currentSong && (
-        <MiniMusicPlayer
-          song={currentSong}
-          isPlaying={isPlaying}
-          onPlayPause={() => setIsPlaying(!isPlaying)}
-          isVisible={isPlayerVisible}
-          setIsVisible={setIsPlayerVisible} // MiniPlayer'a görünürlük kontrolünü gönderiyoruz
-        />
-      )}
     </View>
   );
 }

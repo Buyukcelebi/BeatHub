@@ -1,11 +1,9 @@
 import Slider from '@react-native-community/slider';
-import { StaticScreenProps, useNavigation, useRoute } from '@react-navigation/native';
 import { Octicons as Icon } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { View, Image, Text, TouchableOpacity, ScrollView, ImageSourcePropType } from 'react-native';
+import { View, Image, Text, TouchableOpacity, ScrollView } from 'react-native';
 
 import { useStyles } from './SongMiniPlayerStyles';
-
 import BackButton from '@/components/Buttons/BackButton';
 import SongButton from '@/components/Buttons/SongButton';
 
@@ -19,7 +17,8 @@ function SongMiniPlayer({ backButtonPress, song }) {
     setShufflePressed(!shufflePressed);
   };
 
-  const parsedTime = Number(song.time);
+  // song.time'ın geçerli olup olmadığını kontrol et
+  const parsedTime = isNaN(song.time) ? 0 : Number(song.time); // Eğer NaN ise, 0 kullan
 
   return (
     <ScrollView style={styles.container}>
@@ -31,15 +30,17 @@ function SongMiniPlayer({ backButtonPress, song }) {
         </View>
         <View style={styles.albumContainer}>
           <View style={styles.songBox}>
-            <Image source={song.imageUrl} style={styles.imageSong} />
+            <Image source={{ uri: song.imageUrl }} style={styles.imageSong} />
           </View>
         </View>
         <View style={styles.buttonBox}>
           <View style={styles.buttonContainer}>
             <View style={styles.songTitle}>
               <View style={styles.textContainer}>
-                <Text style={styles.title}>{song.title}</Text>
-                <Text style={styles.description}>{song.description}</Text>
+                {/* Şarkı ismi */}
+                <Text style={styles.title}>{song.songName}</Text>
+                {/* Sanatçı ismi */}
+                <Text style={styles.description}>{song.songArtist}</Text>
               </View>
               <TouchableOpacity style={styles.button}>
                 <Image
@@ -52,17 +53,19 @@ function SongMiniPlayer({ backButtonPress, song }) {
             <View style={styles.sliderContainer}>
               <Slider
                 minimumValue={0}
-                maximumValue={parsedTime}
-                value={song.time}
+                maximumValue={parsedTime} // geçerli bir time değeri
+                value={currentTime}
                 onValueChange={(value) => setCurrentTime(value)}
                 minimumTrackTintColor="#FFF"
                 maximumTrackTintColor="#ffffff66"
                 thumbTintColor="#FFF"
               />
               <View style={styles.timeContainer}>
+                {/* Geçerli zaman */}
                 <Text style={styles.timeText}>
-                  {Math.floor(song.time / 60)}:{('0' + Math.floor(currentTime % 60)).slice(-2)}
+                  {Math.floor(currentTime / 60)}:{('0' + Math.floor(currentTime % 60)).slice(-2)}
                 </Text>
+                {/* Şarkı uzunluğu */}
                 <Text style={styles.timeText}>
                   {Math.floor(parsedTime / 60)}:{('0' + Math.floor(parsedTime % 60)).slice(-2)}
                 </Text>
@@ -97,6 +100,7 @@ function SongMiniPlayer({ backButtonPress, song }) {
             <View style={styles.lyricsContainer}>
               <Text style={styles.lyricsTitle}>Lyrics</Text>
               <ScrollView style={styles.lyricsDescription}>
+                {/* Şarkı açıklaması veya şarkı sözleri */}
                 <Text style={styles.lyricsTitle}>{song.description}</Text>
               </ScrollView>
             </View>

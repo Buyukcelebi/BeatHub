@@ -16,7 +16,8 @@ export default function MiniPlayer({ song, isVisible, setIsVisible }) {
   };
 
   const closeMiniPlayer = () => {
-    closePlayer();
+    togglePlayPause(); // Şarkıyı durdur
+    setIsVisible(false); // Mini player'ı kapat
   };
 
   if (!isVisible) return null;
@@ -25,13 +26,13 @@ export default function MiniPlayer({ song, isVisible, setIsVisible }) {
     <>
       <Pressable onPress={toggleFullScreen} style={[styles.container]}>
         <BlurView intensity={80} style={styles.miniPlayer}>
-          <Image source={song.imageUrl} style={styles.artwork} />
+          <Image source={{ uri: song.imageUrl }} style={styles.artwork} />
           <View style={styles.details}>
             <Text style={styles.songTitle} numberOfLines={1}>
-              {song.title}
+              {song.songName}
             </Text>
             <Text style={styles.artistName} numberOfLines={1}>
-              {song.description}
+              {song.songArtist}
             </Text>
           </View>
           <Pressable onPress={togglePlayPause} style={styles.controlButton}>
@@ -49,7 +50,6 @@ export default function MiniPlayer({ song, isVisible, setIsVisible }) {
           transparent={false}
           visible={isFullScreen}
           onRequestClose={toggleFullScreen}>
-          {/* Full screen player */}
           <SongMiniPlayer backButtonPress={toggleFullScreen} song={song} />
         </Modal>
       )}
