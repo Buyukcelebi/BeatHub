@@ -49,6 +49,7 @@ function CoverLibrary() {
                 songArtist: item.model.name,
                 songName: songName,
                 imageUrl: item.model.avatar,
+                status: item.status,
               };
             })
           );

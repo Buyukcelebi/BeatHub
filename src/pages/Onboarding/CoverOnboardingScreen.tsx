@@ -18,13 +18,17 @@ export default function CoverOnboardingScreen() {
   const isAndroid = Platform.OS === 'android';
 
   const onButtonPress = () => {
-    setIsInitialized(null);
+    console.log('Butona basıldı! isInitialized değiştiriliyor...');
+    setIsInitialized(true);
   };
 
   useEffect(() => {
-    console.log('isInitialized', isInitialized);
+    console.log('isInitialized değişti:', isInitialized);
     if (isInitialized) {
-      navigation.navigate('HomeScreen');
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'HomeScreen' }],
+      });
     }
   }, [isInitialized]);
 

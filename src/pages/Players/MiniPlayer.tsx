@@ -2,21 +2,21 @@ import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import React, { useState } from 'react';
 import { View, Text, Pressable, Image, Modal } from 'react-native';
-import { useStyles } from './MiniPlayerStyle';
-import { useMusicPlayer } from '../../contexts/MusicPlayerContext';
-import SongMiniPlayer from '../Song/SongScreenMiniPlayer';
+import { useStyles } from './MiniPlayerStyle'; // Stil dosyanızın yolunu kontrol edin
+import { useMusicPlayer } from '../../contexts/MusicPlayerContext'; // Context dosyasının yolunu kontrol edin
+import SongMiniPlayer from '../Song/SongScreenMiniPlayer'; // Tam ekran bileşen yolunu kontrol edin
 
 export default function MiniPlayer({ song, isVisible, setIsVisible }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const styles = useStyles();
-  const { isPlaying, togglePlayPause, closePlayer } = useMusicPlayer(); // togglePlayPause fonksiyonunu al
+  const { isPlaying, togglePlayPause, closePlayer } = useMusicPlayer();
 
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
   };
 
   const closeMiniPlayer = () => {
-    togglePlayPause(); // Şarkıyı durdur
+    closePlayer(); // Şarkıyı durdur ve temizle
     setIsVisible(false); // Mini player'ı kapat
   };
 

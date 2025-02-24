@@ -7,7 +7,6 @@ import useThemedStyles from '@/theme/useThemedStyles';
 export const createStyles = (theme: Theme, insets: any) => {
   return StyleSheet.create({
     container: {
-      flex: 1,
       backgroundColor: theme.colors.background,
     },
     top: {
@@ -22,7 +21,7 @@ export const createStyles = (theme: Theme, insets: any) => {
       backgroundColor: theme.colors.background,
       marginHorizontal: theme.spacing.md,
       flex: 1,
-      marginBottom: theme.spacing.xl,
+      marginBottom: 70,
     },
     borderButtons: {
       backgroundColor: theme.colors.surfaceVariant,

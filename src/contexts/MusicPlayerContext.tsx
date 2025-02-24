@@ -19,7 +19,6 @@ export function MusicPlayerProvider({ children }) {
       console.log('Song URI:', songUri);
       if (!songUri) {
         console.error('Error: Song URI is missing or invalid', song);
-
         return;
       }
 
@@ -80,7 +79,7 @@ export function MusicPlayerProvider({ children }) {
         isPlayerVisible,
         setIsPlayerVisible,
         playMusic,
-        togglePlayPause, // Toggle play/pause fonksiyonu
+        togglePlayPause,
         closePlayer,
       }}>
       {children}
